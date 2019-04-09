@@ -842,15 +842,16 @@ strong {
 
 .pagination__list__item {
   display: inline-block;
-  padding: 10px 15px;
-  border-radius: 3px;
-  background-color: #40b8f0;
-  color: #fff;
   text-align: center;
   margin: 0 1px; }
+  .pagination__list__item a {
+    padding: 10px 15px;
+    border-radius: 3px;
+    background-color: #40b8f0;
+    color: #fff; }
   .pagination__list__item:hover {
     color: #fff !important; }
-  .pagination__list__item.active {
+  .pagination__list__item.active a {
     background-color: #1d7aa4; }
 
 .pagination__list__item--dots {

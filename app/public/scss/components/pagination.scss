@@ -3,19 +3,24 @@
 
     &__item {
         display: inline-block;
-        padding: 10px 15px;
-        border-radius: 3px;
-        background-color: $main-color;
-        color: #fff;
         text-align: center;
         margin: 0 1px;
 
+        a{
+            padding: 10px 15px;
+            border-radius: 3px;
+            background-color: $main-color;
+            color: #fff;
+        }
+        
         &:hover{
             color: #fff !important;
         }
 
         &.active {
-            background-color: $second-color;
+            a{
+                background-color: $second-color;
+            }
         }
     }
 

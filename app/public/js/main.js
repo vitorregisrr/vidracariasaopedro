@@ -172,4 +172,15 @@
     }
   });
 
+    //keep params pagination fix
+    $("a.keep-params").click(function (e) {
+      if (window.location.search && !window.location.search.match(/\?page=\d/)) {
+        e.preventDefault(), $(this).attr("href", $(this).attr("href").replace("?", "&"));
+        var dest = window.location.search.replace(/\&page=\d/g, "") + $(this).attr("href");
+        window.setTimeout(function () {
+          window.location.href = dest
+        }, 100)
+      }
+    });
+
 })();
