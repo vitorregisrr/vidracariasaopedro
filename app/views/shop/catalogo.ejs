@@ -31,24 +31,24 @@
                        <div class="col-lg-3 mb-3">
                            <div class='flex-column nav-pills ' id='catalogFilterContainer' role='tablist'
                                aria-orientation='vertical'>
-                               <a href='/catalogo' class='nav-link active'>Destaques</a>
-                               <a href='/catalogo?categoria=boxes' class='nav-link'>Boxes</a>
-                               <a href='/catalogo?categoria=espelhosebisotes' class='nav-link'>Espelhos
+                               <a href='/catalogo' class='nav-link <%= filtro.destaque ? 'active' : ''%>'>Destaques</a>
+                               <a href='/catalogo?categoria=boxes' class='nav-link <%= filtro.categoria == 'boxes' ? 'active' : ''%>'>Boxes</a>
+                               <a href='/catalogo?categoria=espelhosebisotes' class='nav-link <%= filtro.categoria == 'espelhosebisotes' ? 'active' : ''%>'>Espelhos
                                    e Bisotês</a>
-                               <a href='/catalogo?categoria=esquadrias' class='nav-link'>Esquadrias de Alumínio</a>
-                               <a href='/catalogo?categoria=ferragens' class='nav-link'>Ferragens
+                               <a href='/catalogo?categoria=esquadrias' class='nav-link <%= filtro.categoria == 'esquadrias' ? 'active' : ''%>'>Esquadrias de Alumínio</a>
+                               <a href='/catalogo?categoria=ferragens' class='nav-link <%= filtro.categoria == 'ferragens' ? 'active' : ''%>'>Ferragens
                                    para Vidro</a>
-                               <a href='/catalogo?categoria=guardacorpocorrimao' class='nav-link'>Guarda
+                               <a href='/catalogo?categoria=guardacorpocorrimao' class='nav-link <%= filtro.categoria == 'guardacorpocorrimao' ? 'active' : ''%>'>Guarda
                                    Corpo/Corrimão</a>
-                               <a href='/catalogo?categoria=kitversatiktruck' class='nav-link'>Kit
+                               <a href='/catalogo?categoria=kitversatiktruck' class='nav-link <%= filtro.categoria == 'kitversatiktruck' ? 'active' : ''%>'>Kit
                                    Versatik Truck</a>
-                               <a href='/catalogo?categoria=vidrotemperado' class='nav-link'>Vidro
+                               <a href='/catalogo?categoria=vidrotemperado' class='nav-link <%= filtro.categoria == 'vidrotemperado' ? 'active' : ''%>'>Vidro
                                    Temperado</a>
-                               <a href='/catalogo?categoria=telhadodevidro' class='nav-link'>Telhados
+                               <a href='/catalogo?categoria=telhadodevidro' class='nav-link <%= filtro.categoria == 'telhadodevidro' ? 'active' : ''%>'>Telhados
                                    de Vidro</a>
-                               <a href='/catalogo?categoria=vidrocomum' class='nav-link'>Vidro
+                               <a href='/catalogo?categoria=vidrocomum' class='nav-link <%= filtro.categoria == 'vidrocomum' ? 'active' : ''%>'>Vidro
                                    Comum</a>
-                               <a href='/catalogo?categoria=vidrolaminado' class='nav-link'>Vidro
+                               <a href='/catalogo?categoria=vidrolaminado' class='nav-link <%= filtro.categoria == 'vidrolaminado' ? 'active' : ''%>'>Vidro
                                    Laminado</a>
                            </div>
                        </div>

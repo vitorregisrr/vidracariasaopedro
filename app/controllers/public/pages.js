@@ -103,7 +103,8 @@ exports.getCatalogo = (req, res, next) => {
                         hasNext: currentPage < totalPages,
                         hasPrevious: currentPage > 1,
                         totalPages,
-                        currentPage
+                        currentPage,
+                        filtro : query
                     });
                 })
                 .catch(err => next(err, 500));
