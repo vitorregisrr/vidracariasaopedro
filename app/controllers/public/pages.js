@@ -53,8 +53,8 @@ exports.getPortfolio = (req, res, next) => {
             Work.find({
                     ...query
                 })
-                .skip((currentPage - 1) * ITEMS_PER_PAGE)
-                .limit(ITEMS_PER_PAGE)
+                // .skip((currentPage - 1) * ITEMS_PER_PAGE)
+                // .limit(ITEMS_PER_PAGE)
                 .then(works  => {
                     res.render('shop/portfolio', {
                         pageTitle: "Portfólio",

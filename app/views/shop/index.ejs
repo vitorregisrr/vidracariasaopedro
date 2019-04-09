@@ -223,17 +223,9 @@
            </section>
            <section id="portfolio">
                <div class="container">
-                   <h3 class="inner-title">Galeria de <span class="color-main">Projetos</span></h3>
-                   <div class="bottom-lines mb-3"></div>
-                   <div class="ourworks__filters">
-                       <button class="ourworks__filters__button">Destaques</button>
-                       <button class="ourworks__filters__button">Fachadas</button>
-                       <button class="ourworks__filters__button">Janelas</button>
-                       <button class="ourworks__filters__button">Escadas</button>
-                       <button class="ourworks__filters__button">Esquadrias</button>
-                       <button class="ourworks__filters__button">Telhados</button>
-                       <button class="ourworks__filters__button">Espelhos</button>
-                   </div>
+                   <h3 class="inner-title"><span class="color-main">Projetos</span> em destaque</h3>
+                   <div class="bottom-lines mb-5"></div>
+
                </div>
                <div class="container-fluid">
                    <div class="ourworks__list">
@@ -242,7 +234,7 @@
                            <div class="col-sm-6 col-md-4 col-lg-3 p-0">
                                <div class="ourworks__list__item">
                                    <a href="<%= work.imageUrl.url %>" data-title="Esquadria" data-lightbox="ourworks">
-                                       <img src="</images/loading.gif>" data-src="<%= work.imageUrl.url %>" alt=""
+                                       <img src="/images/loading.gif" data-src="<%= work.imageUrl.url %>" alt=""
                                            class="lazy ourworks__list__item__img">
                                        <div class="ourworks__list__item__overlay">
                                            <div class="icon circle-icon--outline-white"> <i class="fa fa-expand"></i>
@@ -252,6 +244,9 @@
                                </div>
                            </div>
                            <% }); %>
+                       </div>
+                       <div class="row d-flex justify-content-center mt-5">
+                            <a role="button" href="/portfolio" class="btn-main">Ver mais</a>
                        </div>
                    </div>
                </div>
