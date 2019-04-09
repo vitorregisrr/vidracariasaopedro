@@ -1,0 +1,62 @@
+.btn-main{
+    @extend %btn;
+    background-color: $main-color;
+    text-transform: uppercase;
+    color: #ffffff  !important;
+    text-align: center;
+
+    &.active, &[aria-expanded="true"]{
+        background-color: darken($main-color, 20);
+    }
+
+    &:hover{
+       @include scale(1.05);
+       background-color: darken($main-color, 10);
+    }
+}
+
+.btn-main--square{
+    @extend %btn-square;
+    background-color: $main-color;
+    text-transform: uppercase;
+    color: #ffffff  !important;
+    text-align: center;
+
+    &.active, &[aria-expanded="true"]{
+        background-color: darken($main-color, 20);
+    }
+
+    &:hover{
+       @include scale(1.05);
+       color: #fff;
+    }
+}
+
+.btn-main--outline{
+    @extend %btn;
+    background-color: transparent;
+    border: 1.5px solid $main-color;
+    border-radius: 30px;
+    text-transform: uppercase;
+    color: $main-color  !important;
+    text-align: center;
+
+    &:hover{
+       background-color: $main-color;
+       color: #fff !important;
+    }
+}
+
+.btn-main--square--outline{
+    @extend %btn-square;
+    background-color: transparent;
+    border: 1.5px solid $main-color;
+    text-transform: uppercase;
+    color: $main-color  !important;
+    text-align: center;
+
+    &:hover{
+       background-color: $main-color;
+       color: #fff !important;
+    }
+}

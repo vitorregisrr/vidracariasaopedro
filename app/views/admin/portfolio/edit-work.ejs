@@ -1,0 +1,56 @@
+<%- include('../includes/head') %>
+</head>
+
+<body>
+    <%- include('../includes/nav') %>
+    <main>
+        <div class="container">
+            <div class="jumbotron jumbotron">
+                <div class="container">
+                    <h1 class="display-5">Editar Trabalho</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <%- include('../includes/errorBox') %>
+                    <form method="POST" action="/admin/portfolio/edit" enctype="multipart/form-data">
+                        <div class="form-group mb-4">
+                            <label for="title">Título: </label>
+                            <input class="form-control" value="<%= work.title %>" maxLength="40" class="form-control"
+                                type="text" name="title" id="title" maxLength="14">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image">Imagem</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="image">
+                                <label class="custom-file-label" for="image">Escolha a imagem</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destaque" name="destaque">Destaque</label>
+                            <select class="form-control" id="destaque" name="destaque">
+                                <option <%= !work.destaque ? 'selected' : '' %> value="false">Não</option>
+                                <option <%= work.destaque ? 'selected'  : '' %> value="true">Sim</option>
+                            </select>
+                        </div>
+
+                        <input class="form-control" type="hidden" name="id" value="<%= work.id %>">
+                        <input class="form-control" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-primary mt-4" type="submit">Editar Trabalho</button>
+                    </form>
+
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<%- include('../includes/end') %>
+
+</html>

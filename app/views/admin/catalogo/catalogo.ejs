@@ -1,0 +1,128 @@
+<%- include('../includes/head') %>
+</head>
+
+<body>
+    <%- include('../includes/nav') %>
+
+    <main>
+        <div class="container">
+            <div class="jumbotron jumbotron">
+                <div class="container">
+                    <h1 class="display-5">Gerenciamento de Catálogo</h1>
+                    <p class="lead">Edite, gerencie ou <a href="catalogo/new">crie um novo produto</a>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form action="/admin/catalogo" method="get">
+                        <div class="form-row align-items-center">
+                            <small>
+                                <p> Filtrar por: </p>
+                            </small>
+
+                            <div class="col-auto">
+                                <label class="sr-only" for="categoria" name="categoria">Categoria</label>
+                                <select class="form-control" id="categoria" name="categoria">
+                                    <option value="boxes">Boxes</option>
+                                    <option value="espelhosebisotes">Espelhos e Bisotês</option>
+                                    <option value="esquadrias">Esquadrias de Alumínio</option>
+                                    <option value="ferragens">Ferragens para Vidro</option>
+                                    <option value="guardacorpocorrimao">Guarda Corpo/Corrimão</option>
+                                    <option value="kitversatiktruck">Kit Versatik Truck</option>
+                                    <option value="vidrotemperado">Vidro Temperado</option>
+                                    <option value="telhadodevidro">Telhado de Vidro</option>
+                                    <option value="vidrocomum">Vidro Comum</option>
+                                    <option value="vidrolaminado">Vidro Laminado</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-2">Filtrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <% if(prods.length > 0){ %>
+                <% for(let prod of prods){ %>
+                <article class="col 12 col-md-6 col-lg-3 product-item">
+                    <div class="card  mb-3">
+                        <img class="card-img-top lazy" style="height: 100px; object-fit: cover" data-src="<%= prod.imageUrl.url %>" alt="<%= prod.title %>">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= prod.title %>
+                            </h5>
+                            <p class="card-text">
+                                <%= prod.description %>
+                            </p>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <a class="btn" href="/admin/catalogo/edit/<%= prod._id %>">Edit</a>
+                                <button class="btn btn-danger btn-delete" type="button" data-csurf="<%= csrfToken %>"
+                                    data-prodId="<%= prod._id %>"> Delete</button>
+                            </div>
+                            <div class="d-flex justify-content-center  mt-4">
+                                <span class="badge badge-pill badge-secondary">
+                                    <%= prod.categoria.toUpperCase() %></span> 
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <% } %>
+                <%} else { %>
+                <div class="jumbotron mt-4">
+                    <div class="container">
+                        <h1 class="display-6">Nenhum produto encontrado.</h1>
+                        <p class="lead">Nenhum produto foi criado por enquanto, clique <a href="/admin/catalogo/new">aqui</a>
+                            para criar um.</p>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <%- include('../includes/pagination') %>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+<%- include('../includes/end') %>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // DELETE PRODUCTS ASYNC
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+
+    let deleteProduct = function () {
+        const csurfToken = this.getAttribute('data-csurf');
+        const productId = this.getAttribute('data-prodId');
+        const parentArticle = this.closest('article.product-item');
+
+        fetch(`/admin/catalogo/delete/${productId}`, {
+                method: 'DELETE',
+                headers: {
+                    "csrf-token": csurfToken
+                }
+            })
+            .then(resul => {
+                return resul.json();
+            })
+            .then(data => {
+                parentArticle.parentNode.removeChild(parentArticle);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    for (let btn of deleteButtons) {
+        btn.addEventListener("click", deleteProduct);
+    }
+});
+</script>
+
+</html>

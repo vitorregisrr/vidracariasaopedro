@@ -1,0 +1,54 @@
+<nav aria-label="Page navigation example" class="m-3">
+    <ul class="pagination justify-content-center">
+        <% if(totalPages >= 1){%>
+            <!-- exibe a primeira página se não estiver nela ou na 2 -->
+            <% if(currentPage != 1 && currentPage -1 != 1){ %>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<%=1%>">
+                        1
+                    </a>
+                </li>
+                <li class="p-2"> ... </li>
+            <% } %>
+            <!-- exibe a página anterior se tiver -->
+            <% if(hasPrevious){ %>
+                <li class="page-item ">
+                    <a class="page-link" href="?page=<%= currentPage-1  %>">
+                        <%= currentPage-1 %>
+                    </a>
+                </li>
+            <% } %>
+            <!-- exibe a página atual -->
+            <li class="page-item active">
+                <a class="page-link" href="?page=<%= currentPage %>">
+                    <%= currentPage %>
+                </a>
+            </li>
+            <!-- exibe a próxima pagian se tiver -->
+            <% if(hasNext){ %>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<%= currentPage+1 %>">
+                        <%= currentPage+1 %>
+                    </a>
+                </li>
+            <% } %>
+            <!-- exibe exibe 2 páginas a frente  se exstir  e a atual for a página 1 -->
+            <% if(currentPage == 1 && totalPages > 2){ %>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<%= currentPage+2 %>">
+                        <%= currentPage+2 %>
+                    </a>
+                </li>
+            <% } %>
+            <!-- exibe a página total se esta não for a atual e nem a penultima e se tiver mais de 3-->
+            <% if(totalPages != currentPage && currentPage != totalPages-1 && totalPages > 3){ %>
+                <li class="p-2"> ... </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<%= totalPages %>">
+                        <%= totalPages %>
+                    </a>
+                </li>
+            <% } %>
+        <% } %>
+    </ul>
+</nav>

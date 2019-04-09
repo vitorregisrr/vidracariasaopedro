@@ -1,0 +1,26 @@
+.nav-pills {
+    @include transition();
+
+    @media screen and (max-width: $bp-lg){
+        text-align: center;
+    }
+
+    .nav-link {
+        font-family: 'robotoregular';
+        padding: 12px 20px;
+        border-radius: 2px;
+        @include transition();
+
+        &:hover{
+            color: #333;
+        }
+
+        &.active{
+            font-family: 'robotobold';
+
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+}

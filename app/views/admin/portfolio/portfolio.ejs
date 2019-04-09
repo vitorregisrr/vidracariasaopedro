@@ -1,0 +1,85 @@
+<%- include('../includes/head') %>
+</head>
+<body>
+    <%- include('../includes/nav') %>
+
+    <main>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="display-5">Gerenciamento de Portfólio</h1>
+                    <p class="lead">Edite, gerencie ou <a href="/admin/portfolio/new">adicione um novo trablalho</a> ao seu portfólio.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-4">
+                <% if(works.length > 0){ %>
+                    <% for(let work of works){ %>
+                        <article class="col 12 col-md-6 col-lg-3 work-item">
+                            <div class="card mb-3">
+                                <img class="card-img-top lazy" data-src="<%= work.imageUrl.url %>" alt="<%= work.title %>">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= work.title %>
+                                    </h5>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a class="btn" href="/admin/portfolio/edit/<%= work.id %>">Editar</a>
+                                        <button class="btn btn-danger btn-delete" type="button" data-csurf="<%= csrfToken %>"
+                                            data-workId="<%= work._id %>"> Deletar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    <% } %>
+                <%} else { %>
+                <div class="jumbotron mt-4">
+                    <div class="container">
+                        <h1 class="display-6">Nenhum trabalho encontrado.</h1>
+                        <p class="lead">Nenhum trabalho foi criado por enquanto, clique <a href="/admin/portfolio/new">aqui</a>
+                            para criar um.</p>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+<%- include('../includes/end') %>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // DELETE PRODUCTS ASYNC
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+
+    let deleteProduct = function () {
+        const csurfToken = this.getAttribute('data-csurf');
+        const productId = this.getAttribute('data-workId');
+        const parentArticle = this.closest('article.work-item');
+
+        fetch(`/admin/portfolio/delete/${productId}`, {
+                method: 'DELETE',
+                headers: {
+                    "csrf-token": csurfToken
+                }
+            })
+            .then(resul => {
+                return resul.json();
+            })
+            .then(data => {
+                parentArticle.parentNode.removeChild(parentArticle);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    for (let btn of deleteButtons) {
+        btn.addEventListener("click", deleteProduct);
+    }
+});
+</script>
+
+</html>

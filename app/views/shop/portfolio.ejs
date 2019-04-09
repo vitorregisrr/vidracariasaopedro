@@ -1,0 +1,126 @@
+   <%- include('includes/head')%>
+   </head>
+
+   <body class="scrollbar-inner wow fadeIn">
+       <%- include('includes/main-header') %>
+
+       <main>
+
+           <section id="banner" class="img-webp">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-12 col-md-10 col-lg-9 text-left banner__text">
+                           <h4 class="banner__text__title wow fadeInDown">Catálogo
+                           </h4>
+                           <h3 class="banner__text__subtitle wow fadeInDown">Navegue pelos nossos produtos!</h3>
+                       </div>
+                   </div>
+               </div>
+           </section>
+
+           <section id="portfolio" class="h-auto mb-5">
+               <div class="container">
+                   <h3 class="inner-title">Galeria de <span class="color-main">Projetos</span></h3>
+                   <div class="bottom-lines mb-3"></div>
+                   <div class="ourworks__filters">
+                       <button class="ourworks__filters__button">Destaques</button>
+                       <button class="ourworks__filters__button">Fachadas</button>
+                       <button class="ourworks__filters__button">Janelas</button>
+                       <button class="ourworks__filters__button">Escadas</button>
+                       <button class="ourworks__filters__button">Esquadrias</button>
+                       <button class="ourworks__filters__button">Telhados</button>
+                       <button class="ourworks__filters__button">Espelhos</button>
+                   </div>
+               </div>
+               <div class="container-fluid">
+                   <div class="ourworks__list">
+                       <div class="row">
+                           <% works.forEach( work => { %>
+                            <div class="col-sm-6 col-md-4 col-lg-3 p-0">
+                                <div class="ourworks__list__item">
+                                    <a href="<%= work.imageUrl.url %>" data-title="Esquadria" data-lightbox="ourworks">
+                                        <img src="</images/loading.gif>" data-src="<%= work.imageUrl.url %>" alt=""
+                                            class="lazy ourworks__list__item__img">
+                                        <div class="ourworks__list__item__overlay">
+                                            <div class="icon circle-icon--outline-white"> <i class="fa fa-expand"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                           <% }); %>
+                       </div>
+                   </div>
+               </div>
+           </section>
+           <section id="contato" class="img-webp">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-lg-4">
+                           <div class="contact-us__text">
+                               <h4 class="contact-us__text__title">Entre em contato!</h4>
+                               <h5 class="contact-us__text__subtitle">Querendo tirar dúvidas ou fazer um orçamento? Use
+                                   o
+                                   formulário entre em
+                                   contato com a gente!</h5>
+
+                               <h4 class="contact-us__text__title mt-4">Ou pelos meios:</h4>
+
+                               <ul class="contact-us__text__list">
+                                   <li class="contact-us__text__list__item"><i class="fa fa-phone mr-2"></i><a
+                                           href="">(53)3242-7579</a> / <a href="">(53)3242-1916</a></li>
+                                   <li class="contact-us__text__list__item"><i class="fa fa-map-marker mr-2"></i>Rua São
+                                       João, n.25, Bairro Getúlio Vargas - Bagé/RS</li>
+                                   <li class="contact-us__text__list__item"><i class="fa fa-facebook mr-2"></i><a
+                                           href="https://www.facebook.com/saopedrovidracaria/">fb.com/saopedrovidracaria</a>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="col-lg-8">
+                           <form action="">
+                               <div class="row">
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu nome" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+
+                                       <div class="form-group">
+                                           <input placeholder="Seu e-mail" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu telefone" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu Endereço" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+
+                                   </div>
+                                   <div class="col-md-12">
+                                       <div class="form-group">
+                                           <textarea rows="4"
+                                               placeholder="Digite sua mensagem ou dados para o orçamento..."
+                                               type="text" class="form-control"></textarea>
+                                       </div>
+                                   </div>
+                               </div>
+                               <button type="submit" class="btn-white--square--outline float-right">Enviar
+                                   mensagem!</button>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </section>
+       </main>
+       <%- include('includes/footer') %>
+   </body>
+
+   </html>

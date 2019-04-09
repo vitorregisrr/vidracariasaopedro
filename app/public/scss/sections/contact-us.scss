@@ -1,0 +1,48 @@
+#contato {
+    padding: 40px 0;
+    min-height: 65vh;
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    &.non-webp {
+        background-image: url('../images/banners/contact.jpg');
+    }
+
+    &.webp {
+        background-image: url('../images/banners/contact.webp');
+    }
+}
+
+.contact-us__text{
+    text-align: left;
+    color: #fff;
+
+    &__title{
+        font-family: 'roboto_slabbold';
+        font-size: 25px;
+    }
+
+    &__subtitle{
+        font-family: 'robotothin';
+        letter-spacing: 1px;
+        font-size: 15px;
+    }
+
+    &__list{
+        list-style: none;
+        padding-left: 0;
+        margin-left: 13px;
+
+        &__item{
+            font-family: 'robotothin';
+            letter-spacing: .6px;
+            margin: 5px 0;
+        }
+    }
+    
+}

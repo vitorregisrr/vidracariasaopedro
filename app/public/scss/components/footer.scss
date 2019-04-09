@@ -1,0 +1,23 @@
+.footer {
+    padding: 60px 0 30px 0;
+
+    .row {
+        @extend %dflex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__developed{
+        p{
+            color: #7b8b8e;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+            padding: 0;
+
+            a{
+                color: inherit;
+            }
+        }
+    }
+}

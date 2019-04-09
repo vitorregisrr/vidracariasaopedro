@@ -1,0 +1,60 @@
+#sobre{
+    padding: 40px 0;
+    min-height: 100vh;
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whychoose {
+    &__list {
+        &__item {
+            @extend %dflex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+
+            @media screen and(max-width: $bp-lg){
+                margin-bottom: 40px;
+            }
+
+            &__icon {
+                width: 120px;
+                height: 120px;
+                border: 2px solid #eeeeee;
+                background-color: $main-color;
+                border-radius: 50%;
+                @extend %dflex;
+                justify-content: center;
+                align-items: center;
+                @include transition(0.8s);
+
+                
+                i{
+                    font-size: 50px;
+                    color: #fff;
+                    @include transition();
+                }
+
+                &:hover{
+                    transform: rotate(360deg) scale(1.03);
+                }
+            }
+
+            &__title {
+                margin-top: 10px;
+                font-family: 'roboto_slabbold';
+                font-size: 20px;
+                color: #333333;
+            }
+
+            &__desc{
+                font-family: 'robotolight';
+                font-size: 16px;
+                color: #696969;
+                max-width: 300px;
+            }
+        }
+    }
+}

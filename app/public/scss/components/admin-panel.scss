@@ -1,0 +1,40 @@
+#adminPanel {
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 1px 1px 21px rgba(0, 0, 0, 0.032);
+    padding: 20px 25px;
+    border-radius: 3px;
+}
+
+.admin-nav {
+
+    &__list {
+        list-style: none;
+        padding: 5px 0;
+        margin: 5px 0 0 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(36, 179, 59, 0.095);
+        }
+
+        &__item {
+            padding: 5px 0 5px 20px;
+            font-weight: 400;
+            color: rgb(83, 83, 83);
+
+            a {
+                color: inherit;
+            }
+
+            .fa {
+                color: rgb(112, 112, 112);
+            }
+        }
+
+        &__item--title {
+            padding: 5px 0;
+            font-weight: 500;
+            color: $main-color;
+        }
+    }
+}

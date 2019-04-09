@@ -1,0 +1,44 @@
+<%- include('../includes/head') %>
+</head>
+
+<body style="background-color: rgb(64, 184, 240);">
+    <main>
+        <div class="container">
+            <div class="jumbotron jumbotron" style="background-color: #ffff">
+                <div class="container">
+                    <h1 class="display-5">Login para o Painel de Admnistração</h1>
+                    <p class="lead">Se você não é o admnistrador deste site, entrou no lugar errado!</p>
+                </div>
+
+                <hr class="m-4" />
+
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                    <%- include('../includes/errorBox') %>
+                        <form method="POST" action="/admin/login">
+
+                            <div class="form-group mb-4">
+                            
+                                <input class="form-control" type="text" placeholder="Usuário" name="usuario" id="usuario" maxLength="14">
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" type="password" placeholder="Senha" name="password" id="password" maxLength="14">
+                            </div>
+
+                            <input class="form-control" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn btn-primary mt-4" type="submit"> Login </button>
+                        </form>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+<%- include('../includes/end') %>
+
+</html>

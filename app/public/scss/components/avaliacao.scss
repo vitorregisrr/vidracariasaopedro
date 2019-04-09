@@ -1,0 +1,48 @@
+.avaliacao {
+    display: flex;
+    min-height: 120px;
+    height: auto;
+    width: 100%;
+    border-radius: 6px;
+    padding: 20px 0;
+    
+    &__content{
+        background: #fff;
+        box-shadow: 1px 1px 21px rgba(0, 0, 0, 0.072);
+        padding: 15px 25px;
+        border-radius: 5%;
+    }
+
+    &__title{
+        font-weight: bold;
+        color: $main-color;
+    }
+
+    &__desc, &__author{
+        font-weight: 400;
+        color: rgb(114, 114, 114);
+    }
+
+    &__author{
+        font-size: 12px;
+        font-style: italic;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__img{
+        flex-basis: 30%;
+        @extend %dflex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 15px;
+
+        img{
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 5%;
+            box-shadow: 1px 1px 21px rgba(0, 0, 0, 0.041);
+        }
+    }
+}   

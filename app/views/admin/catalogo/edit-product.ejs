@@ -1,0 +1,92 @@
+<%- include('../includes/head') %>
+</head>
+
+<body>
+    <%- include('../includes/nav') %>
+    <main>
+        <div class="container">
+            <div class="jumbotron jumbotron">
+                <div class="container">
+                    <h1 class="display-5">Editar Produto</h1>
+                    <p class="lead">Altere os dados abaixo para prosseguir com a edição.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <%- include('../includes/errorBox') %>
+                    <form method="POST" action="/admin/catalogo/edit" enctype="multipart/form-data">
+                        <div class="form-group mb-4">
+                            <label for="nome">Title: </label>
+                            <input class="form-control
+                            <% if(form){ %>
+                                <%= form.hasError.includes('title') ? 'is-invalid' : '' %>
+                            <% } %>"
+                                value="<%= prod.title %>" type="text" name="title" id="title" maxLength="40">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="description">Descrição: </label>
+
+                            <textarea maxLength="150" class="form-control 
+                            <% if(form){ %>
+                                <%= form.hasError.includes('description') ? 'is-invalid' : '' %>
+                            <% } %>"
+                                type="text" name="description" id="description"><%= prod.description %></textarea>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="categoria" name="categoria">Categoria</label>
+                            <select 
+                                class="form-control
+                                <% if(form){ %>
+                                    <%= form.hasError.includes('categoria') ? 'is-invalid' : '' %>
+                                <% } %>" 
+                                id=" categoria" 
+                                name="categoria">
+                                <option <%= prod.categoria == 'boxes' ? 'selected' : '' %> value="boxes">Boxes</option>
+                                <option <%= prod.categoria == 'espelhosebisotes' ? 'selected' : '' %>  value="espelhosebisotes"> Espelhos e Bisotês</option>
+                                <option <%= prod.categoria == 'esquadrias' ? 'selected' : '' %> value="esquadrias"> Esquadrias de Alumínio</option>
+                                <option <%= prod.categoria == 'ferragens' ? 'selected' : '' %> value="ferragens"> Ferragens para Vidro</option>
+                                <option <%= prod.categoria == 'guardacorpocorrimao' ? 'selected' : '' %> value="guardacorpocorrimao"> Guarda Corpo/Corrimão</option>
+                                <option <%= prod.categoria == 'kitversatiktruck' ? 'selected' : '' %> value="kitversatiktruck" >Kit Versatik Truck</option>
+                                <option <%= prod.categoria == 'vidrotemperado' ? 'selected' : '' %> value="vidrotemperado"> Vidro Temperado</option>
+                                <option <%= prod.categoria == 'telhadodevidro' ? 'selected' : '' %> value="telhadodevidro"> Telhado de Vidro</option>
+                                <option <%= prod.categoria == 'vidrocomum' ? 'selected' : '' %> value="vidrocomum"> Vidro Comum</option>
+                                <option <%= prod.categoria == 'vidrolaminado' ? 'selected' : '' %> value="vidrolaminado"> Vidro Laminado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="image">Imagem</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="image">
+                                <label class="custom-file-label" for="image">Escolha a imagem</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destaque" name="destaque">Destaque</label>
+                            <select class="form-control" id="destaque" name="destaque">
+                                <option  <%= !prod.destaque ? 'selected' : '' %> value="false">Não</option>
+                                <option  <%= prod.destaque ? 'selected'  : '' %> value="true">Sim</option>
+                            </select>
+                        </div>
+                    
+                        <input type="hidden" name="id" value="<%= prod.id %>">
+                        <input class="form-control" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-primary mt-4" type="submit"> Editar Produto </button>
+                    </form>
+
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<%- include('../includes/end') %>
+
+</html>

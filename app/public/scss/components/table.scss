@@ -1,0 +1,66 @@
+.responsive-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.flat-table {
+    width: 100%;
+    border-collapse:separate; 
+    border-spacing: 0 10px;
+
+    th {
+        padding: 0px 20px 15px 20px;
+    }
+
+    tbody {
+
+        tr {
+            background: #fff;
+            min-height: 120px;
+            height: auto;
+            width: 100%;
+            box-shadow: 1px 1px 21px rgba(0, 0, 0, 0.072);
+            border-radius: 6px;
+        }
+
+        td {
+            padding: 25px 20px;
+            color: rgb(155, 155, 155);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            
+            &:first-child{
+                font-weight: 600;
+                color: rgb(81, 132, 226);
+            }
+        }
+    }
+}
+
+.acao {
+    @include transition(0.3s, ease-in-out);
+    &:hover{
+        text-decoration: none;
+        color: #fff;
+        transform: scale(1.1);
+    }
+
+    .icon {
+        display: inline;
+        padding: 10px;
+        background-color: rgb(81, 132, 226);
+        font-size: 12px;
+        text-align: center;
+        border-radius: 50%;
+        color: #fff;
+
+        &.danger{
+            background-color: rgb(219, 51, 79);
+        }
+
+        &.success{
+            background-color: $main-color;
+        }
+    }
+}

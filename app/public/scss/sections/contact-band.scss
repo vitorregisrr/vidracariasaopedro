@@ -1,0 +1,34 @@
+#contact-band {
+    width: 100%;
+    height: auto;
+    padding: 25px 0;
+    background-color: $main-color;
+
+    .contact-band__content {
+        font-family: 'roboto_slabbold';
+        text-align: left;
+        @extend %dflex;
+        justify-content: space-between;
+        flex-direction: row;
+
+        @media screen and(max-width: $bp-sm) {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .inner-title {
+            font-size: 25px;
+            color: #fff;
+            line-height: 25px;
+            padding-top: 10px;
+             margin: 0;
+
+            @media screen and(max-width: $bp-sm) {
+                font-size: 20px;
+                line-height: 19px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+}

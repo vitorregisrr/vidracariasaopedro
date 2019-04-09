@@ -1,0 +1,98 @@
+#depoimentos {
+    padding: 40px 0;
+    min-height: 500px;
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    &.non-webp {
+        background-image: url('../images/banners/testimonials.jpg');
+    }
+
+    &.webp {
+        background-image: url('../images/banners/testimonials.webp');
+    }
+}
+
+.testi-list {
+    &__item {
+
+        &__text {
+            background-color: #fff;
+            border: 3px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+            padding: 10px 20px;
+            @extend %dflex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                font-family: 'robotolight';
+                color: #8b8b8b;
+                margin: 0;
+                margin-left: 40px;
+                font-size: 15px;
+                max-height: 100px;
+                overflow: hidden;
+            }
+
+            .quote {
+                position: absolute;
+                top: 30px;
+                font-size: 30px;
+                left: 20px;
+                color: $main-color;
+                z-index: 1;
+            }
+
+        }
+
+        &__author {
+            @extend %dflex;
+            justify-content: flex-end;
+            padding: 15px 0;
+            text-align: right;
+            @extend %dflex;
+            align-items: center;
+
+            &__name {
+                font-family: 'roboto_slabbold';
+                font-size: 17px;
+                color: #fff;
+                
+                p{
+                    margin-bottom: 0px;
+                }
+            }
+
+            &__company {
+                font-family: 'robotoregular';
+                letter-spacing: .5px;
+                font-size: 12px;
+                color: rgb(202, 202, 202);
+                
+                p{
+                    margin-bottom: 5px;
+                }
+            }
+
+            &__img {
+                img {
+                    width: 80px !important;
+                    height: 80px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+    }
+}

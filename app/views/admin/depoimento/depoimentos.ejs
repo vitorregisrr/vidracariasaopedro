@@ -1,0 +1,77 @@
+<%- include('../includes/head') %>
+</head>
+
+<body>
+    <%- include('../includes/nav') %>
+
+    <main>
+        <div class="container">
+            <div class="jumbotron jumbotron">
+                <div class="container">
+                    <h1 class="display-5">Gerenciamento de Depoimentos</h1>
+                    <p class="lead">Edite, gerencie ou <a href="/admin/depoimentos/new"> crie um novo depoimento.</a> </p>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-6">
+                    <% for( let dep of deps ) { %>
+                        <article class="card dep-item">
+                            <div class="row ">
+                                <div class="col-md-4">
+                                    <img src="<%= dep.imageUrl.url %>" class="w-100" style="max-height: 200px; object-fit: contain">
+                                </div>
+                                <div class="col-md-8 px-3">
+                                    <div class="card-block p-4">
+                                        <h4 class="card-title"><%= dep.nome %></h4>
+                                        <p class="card-text"><%= dep.depoimento %> </p>
+                                        <a href="depoimentos/edit/<%= dep.id %>" class="btn btn-outline-primary">Edit</a>
+                                        <button href="#" class="btn btn-danger btn-delete" data-csurf="<%= csrfToken %>" data-depId="<%= dep.id %>">Apagar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // DELETE PRODUCTS ASYNC
+    const deleteButtons = document.querySelectorAll('.btn-delete');
+
+    let deleteDepoimento = function () {
+        const csurfToken = this.getAttribute('data-csurf');
+        const depId = this.getAttribute('data-depId');
+        const parentArticle = this.closest('article.dep-item');
+
+        fetch(`/admin/depoimentos/delete/${depId}`, {
+                method: 'DELETE',
+                headers: {
+                    "csrf-token": csurfToken
+                }
+            })
+            .then(resul => {
+                return resul.json();
+            })
+            .then(data => {
+                parentArticle.parentNode.removeChild(parentArticle);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    for (let btn of deleteButtons) {
+        btn.addEventListener("click", deleteDepoimento);
+    }
+});
+</script>
+<%- include('../includes/end') %>
+
+</html>

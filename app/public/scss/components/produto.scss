@@ -1,0 +1,47 @@
+.produto {
+    height: 300px;
+    background-color: #fff;
+    box-shadow: 2.485px 2.485px 21px 0px rgba(0, 0, 0, 0.048);
+    margin-bottom: 20px;
+    @include transition();
+
+    &:hover{
+        transform: scale(1.02);    
+    }
+
+    &__img {
+        height: 65%;
+        position: relative;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__text {
+        padding: 15px 20px 20px 25px;
+        height: 35%;
+        text-align: left;
+
+        &__title {
+            color: rgb(44, 44, 44);
+            font-size: 16px;
+            font-weight: 600;
+            white-space: wrap;
+            text-overflow: ellipsis;
+            font-family: 'roboto_slabbold';
+        }
+
+        &__desc {
+            color: rgb(112, 112, 112);
+            font-size: 13px;
+            font-weight: 300;
+            overflow: hidden;
+            max-height: 90%;
+            font-family: 'robotolight';
+
+        }
+    }
+}

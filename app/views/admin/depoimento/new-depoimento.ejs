@@ -1,0 +1,75 @@
+<%- include('../includes/head') %>
+</head>
+
+<body>
+    <%- include('../includes/nav') %>
+    <main>
+        <div class="container">
+            <div class="jumbotron jumbotron">
+                <div class="container">
+                    <h1 class="display-5">Novo depoimento</h1>
+                    <p class="lead">Preencha os dados abaixo para prosseguir com a criação.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <%- include('../includes/errorBox') %>
+                    <form method="POST" action="/admin/depoimentos/new" enctype="multipart/form-data">
+                        <div class="form-group mb-4">
+                            <label for="autor">Autor: </label>
+                            <input class="form-control
+                            <% if(form){ %>
+                                <%= form.hasError.includes('autor') ? 'is-invalid' : '' %>
+                            <% } %>""
+                            value=" <%= form ? form.values.autor : ''%>" maxLength="40" type="text" name="autor"
+                                id="autor">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="empresa">Empresa: </label>
+                            <input class="form-control
+                        <% if(form){ %>
+                            <%= form.hasError.includes('empresa') ? 'is-invalid' : '' %>
+                        <% } %>""
+                        value=" <%= form ? form.values.empresa : ''%>" maxLength="40" type="text" name="empresa" id="empresa">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="depoimento">Depoimento: </label>
+
+                            <textarea maxLength="200" class="form-control 
+                            <% if(form){ %>
+                                <%= form.hasError.includes('depoimento') ? 'is-invalid' : '' %>
+                            <% } %>" type="text" name="depoimento"
+                                id="depoimento"><%= form ? form.values.depoimento : ''%></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image">Imagem</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input
+                                <% if(form){ %>
+                                    <%= form.hasError.includes('image') ? 'is-invalid' : '' %>
+                                <% } %>"" 
+                                name="image" id="image">
+                                <label class="custom-file-label" for="image">Escolha a imagem</label>
+                            </div>
+                        </div>
+
+                        <input class="form-control" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-primary mt-4" type="submit"> Criar Depoimento </button>
+                    </form>
+
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<%- include('../includes/end') %>
+
+</html>

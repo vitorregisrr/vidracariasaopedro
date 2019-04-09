@@ -1,0 +1,78 @@
+.form-group {
+    label {
+        color: rgb(41, 41, 41);
+        letter-spacing: .3px;
+        font-weight: 300;
+    }
+
+}
+
+.form-info {
+    font-style: italic;
+    color: rgb(163, 163, 163);
+}
+
+.form-title {
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+
+.form-control {
+    border-radius: 4px;
+    border: none;
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+    outline: none;
+    min-height: 45px;
+    box-shadow: 1px 1px 21px rgba(0, 0, 0, 0.032);
+    color: rgb(163, 163, 163);
+    margin: 5px 0;
+    padding: 0 25px;
+    @include transition();
+
+    &::placeholder {
+        color: #b6b6b6;
+    }
+
+    &:focus {
+        border-color: 1px solid rgba(255, 255, 255, 0.548);
+        box-shadow: none;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
+        outline: none;
+    }
+}
+
+textarea.form-control {
+    padding-top: 10px;
+}
+
+select.form-control {
+    height: 45px !important;
+}
+
+.media-upload {
+    height: auto;
+    width: 100%;
+    margin: 5px 0;
+    padding: 20px 10px;
+    box-shadow: 1px 1px 21px rgba(0, 0, 0, 0.032);
+    border-radius: 4px;
+    background-color: #fff;
+    color: rgb(163, 163, 163);
+
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+    &__text{
+        padding-top: 5px;
+        margin: 0;
+    }
+
+    &__input {
+        display: none;
+    }
+}

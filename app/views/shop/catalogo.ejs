@@ -1,0 +1,154 @@
+   <%- include('includes/head')%>
+   </head>
+
+   <body class="scrollbar-inner wow fadeIn">
+       <%- include('includes/main-header') %>
+
+       <main>
+
+           <section id="banner" class="img-webp">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-12 col-md-10 col-lg-9 text-left banner__text">
+                           <h4 class="banner__text__title wow fadeInDown">Catálogo
+                           </h4>
+                           <h3 class="banner__text__subtitle wow fadeInDown">Navegue pelos nossos produtos!</h3>
+                       </div>
+                   </div>
+               </div>
+           </section>
+
+           <section id="catalogo">
+               <div class="container">
+
+                   <div class="row d-flex justify-content-center mb-5 pb-3">
+                       <h3 class="inner-title text-center pb-1"><span class="color-main">Catálogo</span> de produtos
+                       </h3>
+                       <div class="bottom-lines mb-2"></div>
+                   </div>
+
+                   <div class="row">
+                       <div class="col-lg-3 mb-3">
+                           <div class='flex-column nav-pills ' id='catalogFilterContainer' role='tablist'
+                               aria-orientation='vertical'>
+                               <a href='/catalogo' class='nav-link active'>Destaques</a>
+                               <a href='/catalogo?categoria=boxes' class='nav-link'>Boxes</a>
+                               <a href='/catalogo?categoria=espelhosebisotes' class='nav-link'>Espelhos
+                                   e Bisotês</a>
+                               <a href='/catalogo?categoria=esquadrias' class='nav-link'>Esquadrias de Alumínio</a>
+                               <a href='/catalogo?categoria=ferragens' class='nav-link'>Ferragens
+                                   para Vidro</a>
+                               <a href='/catalogo?categoria=guardacorpocorrimao' class='nav-link'>Guarda
+                                   Corpo/Corrimão</a>
+                               <a href='/catalogo?categoria=kitversatiktruck' class='nav-link'>Kit
+                                   Versatik Truck</a>
+                               <a href='/catalogo?categoria=vidrotemperado' class='nav-link'>Vidro
+                                   Temperado</a>
+                               <a href='/catalogo?categoria=telhadodevidro' class='nav-link'>Telhados
+                                   de Vidro</a>
+                               <a href='/catalogo?categoria=vidrocomum' class='nav-link'>Vidro
+                                   Comum</a>
+                               <a href='/catalogo?categoria=vidrolaminado' class='nav-link'>Vidro
+                                   Laminado</a>
+                           </div>
+                       </div>
+                       <div class="col-lg-9">
+                           <div class="row">
+                               <% prods.forEach( prod => { %>
+                               <div class="col-12 col-md-6">
+                                   <article class="produto wow fadeInUp">
+                                       <div class="produto__img">
+                                           <a href="<%= prod.imageUrl.url %>" data-title="<%= prod.title %>"
+                                               data-lightbox="<%= prod.categoria %>">
+                                               <img src="/images/loading.gif" data-src="<%= prod.imageUrl.url %>"
+                                                   class="lazy" alt="<%= prod.title %>">
+                                           </a>
+                                       </div>
+                                       <div class="produto__text">
+                                           <h3 class="produto__text__title"><%= prod.title %></h3>
+                                           <p class="produto__text__desc m-0"><%= prod.description %> </p>
+                                   </article>
+                               </div>
+                               <% }); %>
+                           </div>
+                           <div class="row">
+                               <div class="col-12">
+                                   <%- include('includes/pagination') %>
+                               </div>
+                           </div>
+
+                       </div>
+                   </div>
+               </div>
+           </section>
+           <section id="contato" class="img-webp">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-lg-4">
+                           <div class="contact-us__text">
+                               <h4 class="contact-us__text__title">Entre em contato!</h4>
+                               <h5 class="contact-us__text__subtitle">Querendo tirar dúvidas ou fazer um orçamento? Use
+                                   o
+                                   formulário entre em
+                                   contato com a gente!</h5>
+
+                               <h4 class="contact-us__text__title mt-4">Ou pelos meios:</h4>
+
+                               <ul class="contact-us__text__list">
+                                   <li class="contact-us__text__list__item"><i class="fa fa-phone mr-2"></i><a
+                                           href="">(53)3242-7579</a> / <a href="">(53)3242-1916</a></li>
+                                   <li class="contact-us__text__list__item"><i class="fa fa-map-marker mr-2"></i>Rua São
+                                       João, n.25, Bairro Getúlio Vargas - Bagé/RS</li>
+                                   <li class="contact-us__text__list__item"><i class="fa fa-facebook mr-2"></i><a
+                                           href="https://www.facebook.com/saopedrovidracaria/">fb.com/saopedrovidracaria</a>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="col-lg-8">
+                           <form action="">
+                               <div class="row">
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu nome" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+
+                                       <div class="form-group">
+                                           <input placeholder="Seu e-mail" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu telefone" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu Endereço" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+
+                                   </div>
+                                   <div class="col-md-12">
+                                       <div class="form-group">
+                                           <textarea rows="4"
+                                               placeholder="Digite sua mensagem ou dados para o orçamento..."
+                                               type="text" class="form-control"></textarea>
+                                       </div>
+                                   </div>
+                               </div>
+                               <button type="submit" class="btn-white--square--outline float-right">Enviar
+                                   mensagem!</button>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </section>
+       </main>
+       <%- include('includes/footer') %>
+   </body>
+
+   </html>

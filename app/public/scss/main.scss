@@ -1,0 +1,40 @@
+body {
+    font-family: 'robotoregular', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    min-height: 100vh;
+    background-color: #ffffff;
+    overflow-x: hidden ;
+}
+
+
+@import 
+'fonts',
+'reset',
+'colors',
+'trumps',
+'placeholders/dflex',
+'animations/pulse',
+'mixins/transition',
+'mixins/breakpoints',
+'placeholders/buttons/default',
+'placeholders/buttons/main',
+'placeholders/buttons/white',
+'sections/home',
+'sections/testimonials',
+'sections/contact-band',
+'sections/whychoose',
+'sections/ourworks',
+'sections/contact-us',
+'sections/banner',
+'sections/catalog',
+'components/footer.scss',
+'components/main-nav',
+'components/produto',
+'components/nav-pills',
+'components/avaliacao',
+'components/pagination',
+'components/form',
+'components/table',
+'components/admin-panel',
+'typo';

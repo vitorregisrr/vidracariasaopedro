@@ -1,0 +1,158 @@
+#main-header {
+    width: 100vw;
+    position: fixed;
+    background-color: transparent;
+    z-index: 3;
+    @include transition;
+}
+
+.header-contact {
+    overflow: hidden;
+    height: 60px;
+    color: #fff;
+    font-weight: 500;
+    @include transition(0.2s);
+
+    @media screen and(max-width: 992px) {
+        display: none;
+    }
+}
+
+#main-nav {
+    padding: 0px 30px;
+    background-color: #fff;
+    border-radius: 1px;
+    position: relative;
+    @include transition;
+
+    @media screen and(max-width: 992px) {
+        margin-top: 30px;
+    }
+
+    .navbar-brand {
+        &>a>img {
+            height: 45px;
+            width: auto;
+            @include transition;
+        }
+    }
+
+    .navbar-toggler {
+        span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            border-radius: 1px;
+            background: $second-color;
+        }
+
+        span+span {
+            margin-top: 4px;
+            width: 18px;
+        }
+    }
+
+    .navbar-nav {
+        font-family: 'robotolight';
+        font-weight: 600;
+        font-size: 14px;
+        text-align: center;
+        color: #333;
+
+        li {
+            padding: 18px 15px;
+            letter-spacing: .5px;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            @include transition(0.2s);
+
+            >a {
+                @include transition(0.2s);
+            }
+
+            &:hover, &.active {
+                background-color: $main-color;
+
+                a {
+                    color: #fff;
+                    font-weight: bold;
+                }
+            }
+
+        }
+    }
+}
+
+// Shrinked Nav
+#main-header.shrink {
+    background-color: #fff;
+    -webkit-box-shadow: 2px 6px 46px -15px rgba(0, 0, 0, 0.158);
+    -moz-box-shadow: 2px 6px 46px -15px rgba(0, 0, 0, 0.158);
+    box-shadow: 2px 6px 46px -15px rgba(0, 0, 0, 0.158);
+
+    .header-contact {
+        height: 0;
+        opacity: 0;
+    }
+
+    #main-nav {
+        padding: 0px 10px;
+
+        @media screen and(max-width: 992px) {
+            padding-bottom: 20px;
+        }
+
+        .navbar-brand {
+            &>a>img {
+                height: 45px;
+            }
+        }
+    }
+}
+
+// Medium Devices toggled styles
+@media screen and (max-width: $bp-lg) {
+    #main-header {
+        #main-nav {
+            padding: 15px 10px;
+
+            .navbar-brand {
+                >a>img {
+                    height: 50px;
+                    width: auto;
+                }
+            }
+
+            .navbar-collapse {
+                padding: 10px 5px;
+            }
+
+            .navbar-nav {
+                li {
+                    padding: 8px 0;
+                    @include transition(0.2s);
+
+                    &:not(:last-child) {
+                        border-bottom: 0.4px solid rgba(117, 117, 117, 0.411);
+                    }
+
+                    >a {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dropdown-menu{
+    border-radius: 1px;
+    z-index: 4;
+
+    .dropdown-item{
+        &:hover{
+            background-color: $main-color;
+        }
+    }
+}

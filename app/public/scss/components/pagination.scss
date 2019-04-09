@@ -1,0 +1,28 @@
+.pagination__list {
+
+
+    &__item {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 3px;
+        background-color: $main-color;
+        color: #fff;
+        text-align: center;
+        margin: 0 1px;
+
+        &:hover{
+            color: #fff !important;
+        }
+
+        &.active {
+            background-color: $second-color;
+        }
+    }
+
+    &__item--dots {
+        display: inline-block;
+        letter-spacing: 4px;
+        padding: 0 3px;
+    }
+
+}
