@@ -1,4 +1,3 @@
 node_modules/
-app/util/mongo_URI.js
-app/util/email-transporter.js
 config.js
+.vscode/
