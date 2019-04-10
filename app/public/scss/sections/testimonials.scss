@@ -19,6 +19,9 @@
 }
 
 .testi-list {
+    width: 100%;
+    overflow-x: hidden;
+
     &__item {
 
         &__text {
@@ -28,7 +31,6 @@
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
             position: relative;
             height: 150px;
-            overflow: hidden;
             padding: 10px 20px;
             @extend %dflex;
             justify-content: center;

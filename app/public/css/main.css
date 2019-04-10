@@ -325,56 +325,57 @@ strong {
   #depoimentos.webp {
     background-image: url("../images/banners/testimonials.webp"); }
 
-.testi-list__item__text {
-  background-color: #fff;
-  border: 3px solid #fff;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  position: relative;
-  height: 150px;
-  overflow: hidden;
-  padding: 10px 20px;
-  justify-content: center;
-  align-items: center; }
-  .testi-list__item__text p {
-    font-family: 'robotolight';
-    color: #8b8b8b;
-    margin: 0;
-    margin-left: 40px;
-    font-size: 15px;
-    max-height: 100px;
-    overflow: hidden; }
-  .testi-list__item__text .quote {
-    position: absolute;
-    top: 30px;
-    font-size: 30px;
-    left: 20px;
-    color: #40b8f0;
-    z-index: 1; }
-
-.testi-list__item__author {
-  justify-content: flex-end;
-  padding: 15px 0;
-  text-align: right;
-  align-items: center; }
-  .testi-list__item__author__name {
-    font-family: 'roboto_slabbold';
-    font-size: 17px;
-    color: #fff; }
-    .testi-list__item__author__name p {
-      margin-bottom: 0px; }
-  .testi-list__item__author__company {
-    font-family: 'robotoregular';
-    letter-spacing: .5px;
-    font-size: 12px;
-    color: #cacaca; }
-    .testi-list__item__author__company p {
-      margin-bottom: 5px; }
-  .testi-list__item__author__img img {
-    width: 80px !important;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover; }
+.testi-list {
+  width: 100%;
+  overflow-x: hidden; }
+  .testi-list__item__text {
+    background-color: #fff;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 150px;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center; }
+    .testi-list__item__text p {
+      font-family: 'robotolight';
+      color: #8b8b8b;
+      margin: 0;
+      margin-left: 40px;
+      font-size: 15px;
+      max-height: 100px;
+      overflow: hidden; }
+    .testi-list__item__text .quote {
+      position: absolute;
+      top: 30px;
+      font-size: 30px;
+      left: 20px;
+      color: #40b8f0;
+      z-index: 1; }
+  .testi-list__item__author {
+    justify-content: flex-end;
+    padding: 15px 0;
+    text-align: right;
+    align-items: center; }
+    .testi-list__item__author__name {
+      font-family: 'roboto_slabbold';
+      font-size: 17px;
+      color: #fff; }
+      .testi-list__item__author__name p {
+        margin-bottom: 0px; }
+    .testi-list__item__author__company {
+      font-family: 'robotoregular';
+      letter-spacing: .5px;
+      font-size: 12px;
+      color: #cacaca; }
+      .testi-list__item__author__company p {
+        margin-bottom: 5px; }
+    .testi-list__item__author__img img {
+      width: 80px !important;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover; }
 
 #contact-band {
   width: 100%;
@@ -590,7 +591,7 @@ strong {
       -moz-animation-delay: .5s;
       -o-animation-delay: .5s; }
     #banner .banner__text__subtitle {
-      color: #40b8f0;
+      color: #FFF;
       font-size: 30px;
       line-height: 30px;
       font-family: 'robotothin'; }
