@@ -41,9 +41,9 @@
                                </div>
                            </div>
                        </div>
-                       <div class="carousel-item text-center img-webp--background"
-                           data-webp="url('/images/banners/vidros_laminados.webp')"
-                           data-nonwebp="url('/images/banners/vidros_laminados.jpg')">
+                       <div class="carousel-item text-center img-webp lazy"
+                           data-webp="/images/banners/vidros_laminados.webp"
+                           data-original="/images/banners/vidros_laminados.jpg">
                            <div class="container">
                                <div class="row">
                                    <div class="col-12 col-md-10 col-lg-9 text-left carousel__text">
@@ -70,9 +70,9 @@
                                </div>
                            </div>
                        </div>
-                       <div class="carousel-item text-center img-webp--background"
-                           data-webp="url('/images/banners/vidros_temperados.webp')"
-                           data-nonwebp="url('/images/banners/vidros_temperados.jpg')">
+                       <div class="carousel-item text-center img-webp lazy"
+                           data-webp="/images/banners/vidros_temperados.webp"
+                           data-original="/images/banners/vidros_temperados.jpg">
                            <div class="container">
                                <div class="row">
                                    <div class="col-12 col-md-10 col-lg-9 text-left carousel__text">
@@ -309,7 +309,7 @@
                    </div>
                </div>
            </section>
-           <section id="contato" class="img-webp">
+           <section id="contato" class="img-webp lazy" data-original="/images/banners/contact.jpg" data-webp="/images/banners/contact.webp">
                <div class="container">
                    <div class="row">
                        <div class="col-lg-4">
@@ -374,7 +374,7 @@
                                <button type="submit" class="btn-white--square--outline float-right">Enviar
                                    mensagem!</button>
 
-                                   <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                            </form>
                        </div>
                    </div>

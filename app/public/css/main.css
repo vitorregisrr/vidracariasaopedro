@@ -536,11 +536,8 @@ strong {
   flex-direction: column;
   background-position: center center;
   background-size: cover;
-  background-attachment: fixed; }
-  #contato.non-webp {
-    background-image: url("../images/banners/contact.jpg"); }
-  #contato.webp {
-    background-image: url("../images/banners/contact.webp"); }
+  background-attachment: fixed;
+  background-color: #1d7aa4; }
 
 .contact-us__text {
   text-align: left;

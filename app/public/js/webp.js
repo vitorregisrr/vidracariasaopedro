@@ -4,23 +4,45 @@
 
  Modernizr.on('webp', function (result) {
      if (result) {
+
+        //Se for background sem lazy
          $('.img-webp').each(function () {
              $(this).addClass('webp');
          });
 
-         $('img.img-webp').each(function () {
-            this.src = $(this).data('webp');
-        });
-
+        //Se for background sem lazy (aplicar diretamente, sem classes)
         $('.img-webp--background').each(function () {
             $(this).css('background-image', $(this).data('webp'));
         });
+
+         //Se for background com lazy
+         $('.img-webp.lazy').each(function () {
+            $(this).attr('data-src', $(this).data('webp'));
+        });
+
+        //Se for imagem sem lazy
+         $('img.img-webp').each(function () {
+            this.src = $(this).data('webp');
+        });
         
      } else {
+
+        //Se for background sem lazy
         $('.img-webp').each(function () {
             $(this).addClass('non-webp');
         });
 
+        //Se for background e com lazy
+        $('.img-webp.lazy').each(function () {
+            $(this).attr('data-src', $(this).data('original'));
+        });
+
+        //Se for background sem lazy (aplicar diretamente, sem classes)
+        $('.img-webp--background').each(function () {
+            $(this).css('background-image', $(this).data('original'));
+        });
+
+        //Se for imagem sem lazy
          $('img.img-webp').each(function () {
             this.src = $(this).data('original');
         });

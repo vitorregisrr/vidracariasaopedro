@@ -8,14 +8,7 @@
     background-position: center center;
     background-size: cover;
     background-attachment: fixed;
-
-    &.non-webp {
-        background-image: url('../images/banners/contact.jpg');
-    }
-
-    &.webp {
-        background-image: url('../images/banners/contact.webp');
-    }
+    background-color: $second-color;
 }
 
 .contact-us__text{

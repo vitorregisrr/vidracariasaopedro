@@ -84,18 +84,7 @@
   $('[data-toggle="tooltip"]').tooltip();
 
   //starting lazy load
-  $('img.lazy').lazyload();
-
-  //starting stars rating
-  $('.starsrating[readonly="false"]').barrating({
-    theme: 'fontawesome-stars'
-  })
-
-  //readonly  stars rating
-  $('.starsrating[readonly="true"]').barrating({
-    theme: 'fontawesome-stars',
-    readonly: true
-  })
+  $('.lazy').lazyload();
 
   //dropdown menu hover
   $('.hover-dropdown').hover(function () {
