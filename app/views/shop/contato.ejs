@@ -5,49 +5,19 @@
        <%- include('includes/main-header') %>
 
        <main>
-
-           <section id="banner" class="img-webp">
+           <section id="contato" class="img-webp" style="min-height: 80vh; padding-top: 200px;">
                <div class="container">
                    <div class="row">
-                       <div class="col-12 col-md-10 col-lg-9 text-left banner__text">
-                           <h4 class="banner__text__title wow fadeInDown">Portfólio
-                           </h4>
-                           <h3 class="banner__text__subtitle wow fadeInDown">Navegue por fotos de alguns de nossos
-                               projetos!</h3>
-                       </div>
-                   </div>
-               </div>
-           </section>
-
-           <section id="portfolio" class="h-auto mb-5">
-               <div class="container">
-                   <h3 class="inner-title">Galeria de <span class="color-main">Projetos</span></h3>
-                   <div class="bottom-lines mb-5"></div>
-               </div>
-               <div class="container-fluid">
-                   <div class="ourworks__list">
-                       <div class="row">
-                           <% works.forEach( work => { %>
-                           <div class="col-sm-6 col-md-4 col-lg-3 p-0">
-                               <div class="ourworks__list__item">
-                                   <a href="<%= work.imageUrl.url %>" data-title="Esquadria" data-lightbox="ourworks">
-                                       <img src="/images/loading.gif" data-src="<%= work.imageUrl.url %>" alt=""
-                                           class="lazy ourworks__list__item__img">
-                                       <div class="ourworks__list__item__overlay">
-                                           <div class="icon circle-icon--outline-white"> <i class="fa fa-expand"></i>
-                                           </div>
-                                       </div>
-                                   </a>
-                               </div>
+                       <div class="col-12">
+                           <%- include('../admin/includes/errorBox') %>
+                           <%  if(successMessage) { %>
+                           <div class="alert alert-success mt-2" role="alert">
+                               <p>
+                                   <%= successMessage %>
+                               </p>
                            </div>
-                           <% }); %>
-                       </div>
-                   </div>
-               </div>
-           </section>
-           <section id="contato" class="img-webp">
-               <div class="container">
-                   <div class="row">
+                           <% } %> 
+                        </div>
                        <div class="col-lg-4">
                            <div class="contact-us__text">
                                <h4 class="contact-us__text__title">Entre em contato!</h4>
@@ -74,26 +44,26 @@
                                <div class="row">
                                    <div class="col-md-6">
                                        <div class="form-group">
-                                           <input placeholder="Seu nome" name="nome" type="text" class="form-control">
+                                           <input placeholder="Seu nome" name="nome" type="text" class="form-control" value="<%= form ? form.values.nome : '' %>" />
                                        </div>
                                    </div>
                                    <div class="col-md-6">
 
                                        <div class="form-group">
                                            <input placeholder="Seu e-mail" name="email" type="text"
-                                               class="form-control">
+                                               class="form-control" value="<%= form ? form.values.email : '' %>" />
                                        </div>
                                    </div>
                                    <div class="col-md-6">
                                        <div class="form-group">
                                            <input placeholder="Seu telefone" name="telefone" type="text"
-                                               class="form-control">
+                                               class="form-control" value="<%= form ? form.values.telefone : '' %>" />
                                        </div>
                                    </div>
                                    <div class="col-md-6">
                                        <div class="form-group">
                                            <input placeholder="Seu Endereço" name="endereco" type="text"
-                                               class="form-control">
+                                               class="form-control" value="<%= form ? form.values.endereco : '' %>" />
                                        </div>
                                    </div>
                                    <div class="col-md-6">
@@ -103,14 +73,14 @@
                                        <div class="form-group">
                                            <textarea rows="4" name="mensagem"
                                                placeholder="Digite sua mensagem ou dados para o orçamento..."
-                                               type="text" class="form-control"></textarea>
+                                               type="text" class="form-control"><%= form ? form.values.mensagem : '' %></textarea>
                                        </div>
                                    </div>
                                </div>
                                <button type="submit" class="btn-white--square--outline float-right">Enviar
                                    mensagem!</button>
 
-                               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                                   <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                            </form>
                        </div>
                    </div>

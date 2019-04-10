@@ -32,23 +32,34 @@
                            <div class='flex-column nav-pills ' id='catalogFilterContainer' role='tablist'
                                aria-orientation='vertical'>
                                <a href='/catalogo' class='nav-link <%= filtro.destaque ? 'active' : ''%>'>Destaques</a>
-                               <a href='/catalogo?categoria=boxes' class='nav-link <%= filtro.categoria == 'boxes' ? 'active' : ''%>'>Boxes</a>
-                               <a href='/catalogo?categoria=espelhosebisotes' class='nav-link <%= filtro.categoria == 'espelhosebisotes' ? 'active' : ''%>'>Espelhos
+                               <a href='/catalogo?categoria=boxes'
+                                   class='nav-link <%= filtro.categoria == 'boxes' ? 'active' : ''%>'>Boxes</a>
+                               <a href='/catalogo?categoria=espelhosebisotes'
+                                   class='nav-link <%= filtro.categoria == 'espelhosebisotes' ? 'active' : ''%>'>Espelhos
                                    e Bisotês</a>
-                               <a href='/catalogo?categoria=esquadrias' class='nav-link <%= filtro.categoria == 'esquadrias' ? 'active' : ''%>'>Esquadrias de Alumínio</a>
-                               <a href='/catalogo?categoria=ferragens' class='nav-link <%= filtro.categoria == 'ferragens' ? 'active' : ''%>'>Ferragens
+                               <a href='/catalogo?categoria=esquadrias'
+                                   class='nav-link <%= filtro.categoria == 'esquadrias' ? 'active' : ''%>'>Esquadrias de
+                                   Alumínio</a>
+                               <a href='/catalogo?categoria=ferragens'
+                                   class='nav-link <%= filtro.categoria == 'ferragens' ? 'active' : ''%>'>Ferragens
                                    para Vidro</a>
-                               <a href='/catalogo?categoria=guardacorpocorrimao' class='nav-link <%= filtro.categoria == 'guardacorpocorrimao' ? 'active' : ''%>'>Guarda
+                               <a href='/catalogo?categoria=guardacorpocorrimao'
+                                   class='nav-link <%= filtro.categoria == 'guardacorpocorrimao' ? 'active' : ''%>'>Guarda
                                    Corpo/Corrimão</a>
-                               <a href='/catalogo?categoria=kitversatiktruck' class='nav-link <%= filtro.categoria == 'kitversatiktruck' ? 'active' : ''%>'>Kit
+                               <a href='/catalogo?categoria=kitversatiktruck'
+                                   class='nav-link <%= filtro.categoria == 'kitversatiktruck' ? 'active' : ''%>'>Kit
                                    Versatik Truck</a>
-                               <a href='/catalogo?categoria=vidrotemperado' class='nav-link <%= filtro.categoria == 'vidrotemperado' ? 'active' : ''%>'>Vidro
+                               <a href='/catalogo?categoria=vidrotemperado'
+                                   class='nav-link <%= filtro.categoria == 'vidrotemperado' ? 'active' : ''%>'>Vidro
                                    Temperado</a>
-                               <a href='/catalogo?categoria=telhadodevidro' class='nav-link <%= filtro.categoria == 'telhadodevidro' ? 'active' : ''%>'>Telhados
+                               <a href='/catalogo?categoria=telhadodevidro'
+                                   class='nav-link <%= filtro.categoria == 'telhadodevidro' ? 'active' : ''%>'>Telhados
                                    de Vidro</a>
-                               <a href='/catalogo?categoria=vidrocomum' class='nav-link <%= filtro.categoria == 'vidrocomum' ? 'active' : ''%>'>Vidro
+                               <a href='/catalogo?categoria=vidrocomum'
+                                   class='nav-link <%= filtro.categoria == 'vidrocomum' ? 'active' : ''%>'>Vidro
                                    Comum</a>
-                               <a href='/catalogo?categoria=vidrolaminado' class='nav-link <%= filtro.categoria == 'vidrolaminado' ? 'active' : ''%>'>Vidro
+                               <a href='/catalogo?categoria=vidrolaminado'
+                                   class='nav-link <%= filtro.categoria == 'vidrolaminado' ? 'active' : ''%>'>Vidro
                                    Laminado</a>
                            </div>
                        </div>
@@ -106,27 +117,30 @@
                            </div>
                        </div>
                        <div class="col-lg-8">
-                           <form action="">
+                           <form action="/contato" method="POST">
                                <div class="row">
                                    <div class="col-md-6">
                                        <div class="form-group">
-                                           <input placeholder="Seu nome" type="text" class="form-control">
+                                           <input placeholder="Seu nome" name="nome" type="text" class="form-control">
                                        </div>
                                    </div>
                                    <div class="col-md-6">
 
                                        <div class="form-group">
-                                           <input placeholder="Seu e-mail" type="text" class="form-control">
+                                           <input placeholder="Seu e-mail" name="email" type="text"
+                                               class="form-control">
                                        </div>
                                    </div>
                                    <div class="col-md-6">
                                        <div class="form-group">
-                                           <input placeholder="Seu telefone" type="text" class="form-control">
+                                           <input placeholder="Seu telefone" name="telefone" type="text"
+                                               class="form-control">
                                        </div>
                                    </div>
                                    <div class="col-md-6">
                                        <div class="form-group">
-                                           <input placeholder="Seu Endereço" type="text" class="form-control">
+                                           <input placeholder="Seu Endereço" name="endereco" type="text"
+                                               class="form-control">
                                        </div>
                                    </div>
                                    <div class="col-md-6">
@@ -134,7 +148,7 @@
                                    </div>
                                    <div class="col-md-12">
                                        <div class="form-group">
-                                           <textarea rows="4"
+                                           <textarea rows="4" name="mensagem"
                                                placeholder="Digite sua mensagem ou dados para o orçamento..."
                                                type="text" class="form-control"></textarea>
                                        </div>
@@ -142,6 +156,8 @@
                                </div>
                                <button type="submit" class="btn-white--square--outline float-right">Enviar
                                    mensagem!</button>
+
+                               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                            </form>
                        </div>
                    </div>

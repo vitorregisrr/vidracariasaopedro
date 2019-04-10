@@ -1,5 +1,6 @@
 const Product = require('../../models/product'),
     Work = require('../../models/work'),
+    transporter = require('../../util/email-transporter')(),
     Depoimento = require('../../models/depoimento');
 
 exports.getIndex = (req, res, next) => {
@@ -20,7 +21,8 @@ exports.getIndex = (req, res, next) => {
                                 path: "/",
                                 deps,
                                 works,
-                                prods
+                                prods,
+                                csrfToken: req.csrfToken(),
                             });
                         })
                 })
@@ -55,15 +57,16 @@ exports.getPortfolio = (req, res, next) => {
                 })
                 // .skip((currentPage - 1) * ITEMS_PER_PAGE)
                 // .limit(ITEMS_PER_PAGE)
-                .then(works  => {
+                .then(works => {
                     res.render('shop/portfolio', {
                         pageTitle: "Portfólio",
-                        works : works ,
+                        works: works,
                         path: "/portfolio",
                         hasNext: currentPage < totalPages,
                         hasPrevious: currentPage > 1,
                         totalPages,
-                        currentPage
+                        currentPage,
+                        csrfToken: req.csrfToken(),
                     });
                 })
                 .catch(err => next(err, 500));
@@ -104,7 +107,8 @@ exports.getCatalogo = (req, res, next) => {
                         hasPrevious: currentPage > 1,
                         totalPages,
                         currentPage,
-                        filtro : query
+                        filtro: query,
+                        csrfToken: req.csrfToken(),
                     });
                 })
                 .catch(err => next(err, 500));
@@ -140,13 +144,39 @@ exports.getProducts = (req, res, next) => {
 
 exports.getContato = (req, res, next) => {
     res.render('shop/contato', {
-        pageTitle: "Vidros e Esquadrias de Aluminío em Bagé-RS",
+        pageTitle: "Contato",
         path: "/contato",
-        banner: {
-            id: "banner-contato",
-            title: "Contate-nos",
-            subtitle: "Faça um orçamento ou tire suas dúvidas!",
-            mapName: "Contato"
-        }
+        errorMessage: [],
+        successMessage: false,
+        csrfToken: req.csrfToken()
     });
+}
+
+
+exports.postContato = (req, res, next) => {
+    transporter.sendMail({
+            to: 'vidracariasaopedro@brturbo.com.br',
+            from: req.body.email,
+            subject: 'Mensagem de contato recebida pelo site!',
+            html: `
+                    <h3> Você recebeu uma nova mensagem de contato a partir do formulário do seu site! </h3>
+                    <p>De: ${req.body.nome}</p>
+                    <p>Telefone: ${req.body.telefone}</p>
+                    <p>E mail: ${req.body.email}</p>
+                    <p>Endereço: ${req.body.endereco}</p>
+                    <p>Com a mensagem: ${req.body.mensagem}</p>
+                    <h5> Responda o mais rápido possível, não deixe seu cliente esperando! </h5>
+                `
+        })
+        .then(resul => {
+            res.render('shop/contato', {
+                pageTitle: "Entre em contato conosco!",
+                path: "/contato",
+                errorMessage: [],
+                successMessage: 'Mensagem enviada, assim que possível entraremos em contato com uma resposta!',
+                csrfToken: req.csrfToken(),
+                form: false,
+            });
+        })
+        .catch(err => next(err))
 }

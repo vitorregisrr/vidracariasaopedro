@@ -373,3 +373,58 @@ exports.editDepoimento = [
         }
     }
 ]
+
+
+exports.contato = [
+    [
+        body('nome', 'O nome é obrigatório.')
+        .isLength({
+            min: 6,
+            max: 30,
+        })
+        .withMessage('O nome deve ter entre 6 e 30 letras.'),
+
+        body('telefone', 'O telefone é obrigatório.')
+        .isLength({
+            min: 6,
+            max: 14,
+        })
+        .withMessage('O telefone deve ter entre 6 e 14 letras.'),
+
+        body('endereco', 'O endereco é obrigatório.')
+        .isLength({
+            min: 10,
+            max: 100,
+        })
+        .withMessage('O endereço deve ter entre 10 e 100 letras.'),
+
+        body('email', 'O campo email é obrigatório')
+        .isEmail()
+        .withMessage('O campo e-mail não recebeu um e-mail válido.')
+        .trim(),
+
+    ],
+
+    //Calback Function
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res
+                .status(422)
+                .render('shop/contato', {
+                    path: '/contato',
+                    pageTitle: 'Contate-nos',
+                    errorMessage: errors.array(),
+                    successMessage: false,
+                    form: {
+                        values: req.body,
+                        hasError: errors.array().map(i => i.param)
+                    },
+                    csrfToken: req.csrfToken(),
+                })
+        } else {
+            next();
+        }
+    }
+
+]
