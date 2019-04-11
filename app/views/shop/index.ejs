@@ -211,7 +211,7 @@
                                            </div>
                                        </div>
                                        <div class="testi-list__item__author__img">
-                                           <img class="lazy" data-src="<%= dep.imageUrl.url %>"
+                                           <img class="lazy" data-src="<%= dep.imageUrl.secure_url %>"
                                                alt="<%= dep.autor %> <%= dep.empresa %>">
                                        </div>
                                    </div>
@@ -234,8 +234,8 @@
                            <% works.forEach( work => { %>
                            <div class="col-sm-6 col-md-4 col-lg-3 p-0">
                                <div class="ourworks__list__item">
-                                   <a href="<%= work.imageUrl.url %>" data-title="Esquadria" data-lightbox="ourworks">
-                                       <img src="/images/loading.gif" data-src="<%= work.imageUrl.url %>" alt=""
+                                   <a href="<%= work.imageUrl.secure_url %>" data-title="Esquadria" data-lightbox="ourworks">
+                                       <img src="/images/loading.gif" data-src="<%= work.imageUrl.secure_url %>" alt=""
                                            class="lazy ourworks__list__item__img">
                                        <div class="ourworks__list__item__overlay">
                                            <div class="icon circle-icon--outline-white"> <i class="fa fa-expand"></i>
@@ -292,9 +292,9 @@
                                <div class="col-12 col-md-6">
                                    <article class="produto wow fadeInUp">
                                        <div class="produto__img">
-                                           <a href="<%= prod.imageUrl.url %>" data-title="<%= prod.title %>"
+                                           <a href="<%= prod.imageUrl.secure_url %>" data-title="<%= prod.title %>"
                                                data-lightbox="<%= prod.categoria %>">
-                                               <img src="/images/loading.gif" data-src="<%= prod.imageUrl.url %>"
+                                               <img src="/images/loading.gif" data-src="<%= prod.imageUrl.secure_url %>"
                                                    class="lazy" alt="<%= prod.title %>">
                                            </a>
                                        </div>
