@@ -148,7 +148,8 @@ exports.getContato = (req, res, next) => {
         path: "/contato",
         errorMessage: [],
         successMessage: false,
-        csrfToken: req.csrfToken()
+        csrfToken: req.csrfToken(),
+        form: false
     });
 }
 
