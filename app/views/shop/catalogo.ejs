@@ -31,63 +31,56 @@
                        <div class="col-lg-3 mb-3">
                            <div class='flex-column nav-pills ' id='catalogFilterContainer' role='tablist'
                                aria-orientation='vertical'>
-                               <a href='/catalogo' class='nav-link <%= filtro.destaque ? 'active' : ''%>'>Destaques</a>
-                               <a href='/catalogo?categoria=boxes'
-                                   class='nav-link <%= filtro.categoria == 'boxes' ? 'active' : ''%>'>Boxes</a>
-                               <a href='/catalogo?categoria=espelhosebisotes'
-                                   class='nav-link <%= filtro.categoria == 'espelhosebisotes' ? 'active' : ''%>'>Espelhos
+                               <a href='/catalogo' class='nav-link active' data-filter='destaques'>Destaques</a>
+
+                               <a href='#'
+                                   class='nav-link' data-filter="boxes">Boxes</a>
+
+                               <a href='#'
+                                   class='nav-link' data-filter="espelhosebisotes">Espelhos
                                    e Bisotês</a>
-                               <a href='/catalogo?categoria=esquadrias'
-                                   class='nav-link <%= filtro.categoria == 'esquadrias' ? 'active' : ''%>'>Esquadrias de
+                               <a href='#'
+                                   class='nav-link' data-filter="esquadrias">Esquadrias de
                                    Alumínio</a>
-                               <a href='/catalogo?categoria=ferragens'
-                                   class='nav-link <%= filtro.categoria == 'ferragens' ? 'active' : ''%>'>Ferragens
+                               <a href='#'
+                                   class='nav-link' data-filter="ferragens">Ferragens
                                    para Vidro</a>
-                               <a href='/catalogo?categoria=guardacorpocorrimao'
-                                   class='nav-link <%= filtro.categoria == 'guardacorpocorrimao' ? 'active' : ''%>'>Guarda
+                               <a href='#'
+                                   class='nav-link' data-filter="guardacorpocorrimao">Guarda
                                    Corpo/Corrimão</a>
-                               <a href='/catalogo?categoria=kitversatiktruck'
-                                   class='nav-link <%= filtro.categoria == 'kitversatiktruck' ? 'active' : ''%>'>Kit
+                               <a href='#'
+                                   class='nav-link' data-filter="kitversatiktruck">Kit
                                    Versatik Truck</a>
-                               <a href='/catalogo?categoria=vidrotemperado'
-                                   class='nav-link <%= filtro.categoria == 'vidrotemperado' ? 'active' : ''%>'>Vidro
+                               <a href='#'
+                                   class='nav-link' data-filter="vidrotemperado">Vidro
                                    Temperado</a>
-                               <a href='/catalogo?categoria=telhadodevidro'
-                                   class='nav-link <%= filtro.categoria == 'telhadodevidro' ? 'active' : ''%>'>Telhados
+                               <a href='#'
+                                   class='nav-link' data-filter="telhadodevidro">Telhados
                                    de Vidro</a>
-                               <a href='/catalogo?categoria=vidrocomum'
-                                   class='nav-link <%= filtro.categoria == 'vidrocomum' ? 'active' : ''%>'>Vidro
+                               <a href='#'
+                                   class='nav-link' data-filter="vidrocomum">Vidro
                                    Comum</a>
-                               <a href='/catalogo?categoria=vidrolaminado'
-                                   class='nav-link <%= filtro.categoria == 'vidrolaminado' ? 'active' : ''%>'>Vidro
+                               <a href='#'
+                                   class='nav-link' data-filter="vidrolaminado">Vidro
                                    Laminado</a>
                            </div>
                        </div>
                        <div class="col-lg-9">
                            <div class="row">
-                               <% prods.forEach( prod => { %>
-                               <div class="col-12 col-md-6">
-                                   <article class="produto wow fadeInUp">
-                                       <div class="produto__img">
-                                           <a href="<%= prod.imageUrl.secure_url %>" data-title="<%= prod.title %>"
-                                               data-lightbox="<%= prod.categoria %>">
-                                               <img src="/images/loading.gif" data-src="<%= prod.imageUrl.secure_url %>"
-                                                   class="lazy" alt="<%= prod.title %>">
-                                           </a>
-                                       </div>
-                                       <div class="produto__text">
-                                           <h3 class="produto__text__title"><%= prod.title %></h3>
-                                           <p class="produto__text__desc m-0"><%= prod.description %> </p>
-                                   </article>
+                               <div id="loading" class="w-100">
+                                   <div class="d-flex w-100 justify-content-center">
+                                       <img src="/images/loading-2.gif" width="300" alt="">
+                                    </div>
                                </div>
-                               <% }); %>
+                           </div>
+                           <div class="row" id="catalogo-products">
+
                            </div>
                            <div class="row">
-                               <div class="col-12">
-                                   <%- include('includes/pagination') %>
+                               <div class="col-12 d-flex justify-content-center">
+                                    <button id="btnLoadMore" class="btn-main mt-3">Ver mais <i class="fa fa-plus"></i></button>
                                </div>
                            </div>
-
                        </div>
                    </div>
                </div>
@@ -165,6 +158,7 @@
            </section>
        </main>
        <%- include('includes/footer') %>
+       <script src="/js/catalogo.js" defer></script>
    </body>
 
    </html>

@@ -9,4 +9,6 @@ router.get('/catalogo', pagesCtrl.getCatalogo);
 router.get('/contato', pagesCtrl.getContato);
 router.post('/contato', validators.contato, pagesCtrl.postContato);
 
+router.get('/api/getProdutos', pagesCtrl.getProdutos);
+
 module.exports = router;

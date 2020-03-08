@@ -12,7 +12,7 @@
 
 %btn-square{
     @extend %btn;
-    border-radius: 6px;
+    border-radius: 25px;
     padding: 13px 32px;
     line-height: 22px;
     font-size: 16px;
@@ -25,4 +25,7 @@
     color: #fff;
 }
 
+.btn-square{
+    @extend %btn-square;
+}
 

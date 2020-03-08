@@ -88,7 +88,7 @@ strong {
   box-shadow: 0 0 0 #d6314f69;
   animation: pulse 2s infinite; }
 
-.btn-main--square, .btn-main--square--outline, .btn-white--square, .btn-white--square--outline, .btn-default, .btn-main, .btn-main--outline, .btn-white, .btn-white--outline {
+.btn-square, .btn-main--square, .btn-main--square--outline, .btn-white--square, .btn-white--square--outline, .btn-default, .btn-main, .btn-main--outline, .btn-white, .btn-white--outline {
   border-radius: 30px;
   padding: 14px 40px;
   border: none;
@@ -103,8 +103,8 @@ strong {
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
 
-.btn-main--square, .btn-main--square--outline, .btn-white--square, .btn-white--square--outline {
-  border-radius: 6px;
+.btn-square, .btn-main--square, .btn-main--square--outline, .btn-white--square, .btn-white--square--outline {
+  border-radius: 25px;
   padding: 13px 32px;
   line-height: 22px;
   font-size: 16px; }
@@ -651,7 +651,7 @@ strong {
   transition: all 0.3s ease-in-out; }
   @media screen and (max-width: 992px) {
     #main-nav {
-      margin-top: 30px; } }
+      margin-top: 20px; } }
   #main-nav .navbar-brand > a > img {
     height: 45px;
     width: auto;
@@ -710,9 +710,9 @@ strong {
     padding: 0px 10px; }
     @media screen and (max-width: 992px) {
       #main-header.shrink #main-nav {
-        padding-bottom: 20px; } }
+        padding-bottom: 10px; } }
     #main-header.shrink #main-nav .navbar-brand > a > img {
-      height: 45px; }
+      height: 35px; }
 
 @media screen and (max-width: 992px) {
   #main-header #main-nav {

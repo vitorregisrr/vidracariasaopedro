@@ -1,6 +1,8 @@
 (function () {
   'use strict';
-  let windowWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  let windowWidth = (window.innerWidth > 0) ?
+    window.innerWidth :
+    screen.width;
 
   // Navbar stick event
   $(document).on("scroll", function () {
@@ -26,7 +28,9 @@
   });
 
   //home index animation on scroll
-  const areaToGetScrolled = windowWidth > 576 ? 300 : 650;
+  const areaToGetScrolled = windowWidth > 576 ?
+    300 :
+    650;
   $(document).on("scroll", function () {
     if ($(document).scrollTop() > areaToGetScrolled) {
       $("#home").addClass("scrolled");
@@ -38,7 +42,7 @@
   // wow non mobile init
   new WOW({
     boxClass: 'wowNonMobile',
-    mobile: false,
+    mobile: false
   }).init();
 
   //normal wow init
@@ -46,18 +50,23 @@
 
   // Smooth Scroll
   $(document).ready(function () {
-    $("a").on('click', function (event) {
-      if (this.hash !== "" && $(`a[href="${this.hash}"`).attr('href')[0] === '#') {
-        event.preventDefault();
+    $("a")
+      .on('click', function (event) {
+        if (this.hash !== "" && $(`a[href="${this.hash}"`).attr('href')[0] === '#') {
+          event.preventDefault();
 
-        const offset = this.hash == '#contato' ? 80 : 70;
-        var hash = this.hash;
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top - offset
-        }, 800, function () {});
+          const offset = this.hash == '#contato' ?
+            80 :
+            70;
+          var hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash)
+              .offset()
+              .top - offset
+          }, 800, function () {});
 
-      }
-    });
+        }
+      });
 
     setTimeout(() => {
       if (window.location.hash) {
@@ -67,17 +76,21 @@
     }, 1000);
   });
 
-
   //Making collapse groups work
   const myGroup = $('#collapseGroup');
   myGroup.on('show.bs.collapse', '.collapse', function () {
-    myGroup.find('.collapse.show').collapse('hide');
+    myGroup
+      .find('.collapse.show')
+      .collapse('hide');
   });
 
   //Input type file mask
   $('.media-upload__input').change(function (e) {
     const fileName = e.target.files[0].name;
-    $(this).closest('.media-upload').find('.media-upload__text').html(`Imagem selecionada: ${ fileName }`);
+    $(this)
+      .closest('.media-upload')
+      .find('.media-upload__text')
+      .html(`Imagem selecionada: ${fileName}`);
   });
 
   //starting bootstrap tooltip
@@ -88,9 +101,17 @@
 
   //dropdown menu hover
   $('.hover-dropdown').hover(function () {
-    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+    $(this)
+      .find('.dropdown-menu')
+      .stop(true, true)
+      .delay(200)
+      .fadeIn(500);
   }, function () {
-    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+    $(this)
+      .find('.dropdown-menu')
+      .stop(true, true)
+      .delay(200)
+      .fadeOut(500);
   });
 
   //carousel animations
@@ -122,8 +143,7 @@
     }
   })
 
-  //Set nav-link active while scrolling
-  // Cache selectors
+  //Set nav-link active while scrolling Cache selectors
   const mainNav = $("#main-nav"),
     mainNavHeight = mainNav.outerHeight() + 15,
     // All list items
@@ -146,33 +166,101 @@
     // Get id of current scroll item
     var cur = scrollItems.map(function (cur) {
 
-      const offset = $(this).attr('id') == 'contato' ? 80 : 0;
+      const offset = $(this).attr('id') == 'contato' ?
+        80 :
+        0;
       if ($(this).offset().top < (fromTop + offset)) {
         return this;
       }
     });
     // Get the id of the current element
     cur = cur[cur.length - 1];
-    var id = cur && cur.length ? cur[0].id : "";
+    var id = cur && cur.length ?
+      cur[0].id :
+      "";
     // Set/remove active class
 
     if (scrollItems.length > 1) {
       menuItems
-        .parent().removeClass("active")
-        .end().filter("[href='#" + id + "']").parent().addClass("active");
+        .parent()
+        .removeClass("active")
+        .end()
+        .filter("[href='#" + id + "']")
+        .parent()
+        .addClass("active");
     }
   });
 
-    //keep params pagination fix
-    $("a.keep-params").click(function (e) {
-      if (window.location.search && !window.location.search.match(/\?page=\d/)) {
-        e.preventDefault(), $(this).attr("href", $(this).attr("href").replace("?", "&"));
-        var dest = window.location.search.replace(/\&page=\d/g, "") + $(this).attr("href");
-        window.setTimeout(function () {
-          window.location.href = dest
-        }, 100)
-      }
-    });
+  //keep params pagination fix
+  $("a.keep-params").click(function (e) {
+    if (window.location.search && !window.location.search.match(/\?page=\d/)) {
+      e.preventDefault(),
+        $(this).attr("href", $(this).attr("href").replace("?", "&"));
+      var dest = window
+        .location
+        .search
+        .replace(/\&page=\d/g, "") + $(this).attr("href");
+      window.setTimeout(function () {
+        window.location.href = dest
+      }, 100)
+    }
+  });
 
-    window.dispatchEvent(new Event('resize'));
+  $("#contato form").validate({
+    rules: {
+      nome: {
+        required: true,
+        minLength: 5
+      },
+
+      email: {
+        required: true,
+        email: true
+      },
+
+      telefone: {
+        required: true,
+        minlength: 10
+      },
+
+      endereco: {
+        required: true,
+        minlength: 10
+      },
+
+      mensagem: {
+        required: true,
+        minlength: 10
+      }
+    },
+
+    messages: {
+      nome: {
+        required: "Parece que você não escreveu seu nome",
+        minLength: "Seu nome parece estar incompleto"
+      },
+
+      email: {
+        required: 'Precisamos saber seu email.',
+        email: 'Email inválido.'
+      },
+
+      telefone: {
+        required: 'Precisamos saber seu telefone.',
+      },
+
+
+      email: {
+        required: 'Precisamos saber seu endereço.',
+      },
+
+
+      mensagem: {
+        required: "Por favor, escreva uma mensagem!",
+        minlength: "Sua mensagem deve ter no mínimo 10 caracteres."
+      }
+    }
+  });
+
+  window.dispatchEvent(new Event('resize'));
 })();

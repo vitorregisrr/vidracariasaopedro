@@ -9,6 +9,7 @@ const adminCtrl = {
     depoimento : require('../controllers/admin/depoimento'),
     product : require('../controllers/admin/product'),
     work : require('../controllers/admin/work'),
+    noticia : require('../controllers/admin/noticia')
 }
 
 //INDEX 
@@ -28,7 +29,7 @@ router.get('/admin/catalogo', isAuth, setLocals, adminCtrl.product.getCatalogo);
     router.delete('/admin/catalogo/delete/:productId', isAuth, setLocals, adminCtrl.product.deleteProduct);
 
 //PORTFOLIO
-    router.get('/admin/portfolio', isAuth, setLocals, adminCtrl.work.getPortfolio);
+router.get('/admin/portfolio', isAuth, setLocals, adminCtrl.work.getPortfolio);
     //GET NEW
     router.get('/admin/portfolio/new', isAuth, setLocals, adminCtrl.work.getNewWork);
     //POST NEW
@@ -42,7 +43,7 @@ router.get('/admin/catalogo', isAuth, setLocals, adminCtrl.product.getCatalogo);
     router.delete('/admin/portfolio/delete/:workId', isAuth, setLocals, adminCtrl.work.deleteWork);
 
 //DEPOIMENTOS
-    router.get('/admin/depoimentos', isAuth, setLocals, adminCtrl.depoimento.getDepoimentos);
+router.get('/admin/depoimentos', isAuth, setLocals, adminCtrl.depoimento.getDepoimentos);
     //GET NEW
     router.get('/admin/depoimentos/new', isAuth, setLocals, adminCtrl.depoimento.getNewDepoimento);
     //POST NEW
@@ -53,5 +54,19 @@ router.get('/admin/catalogo', isAuth, setLocals, adminCtrl.product.getCatalogo);
      router.post('/admin/depoimentos/edit', isAuth, setLocals, validators.editDepoimento, adminCtrl.depoimento.postEditDepoimento);
     //DELETE 
     router.delete('/admin/depoimentos/delete/:depId', isAuth, setLocals, adminCtrl.depoimento.deleteDepoimento);
+
+
+//NOTICIAS
+router.get('/admin/noticias', isAuth, setLocals, adminCtrl.noticia.getNoticias);
+    //GET NEW
+    router.get('/admin/noticias/new', isAuth, setLocals, adminCtrl.noticia.getNewNoticia);
+    //POST NEW
+    router.post('/admin/noticias/new', isAuth, setLocals, validators.newNoticia, adminCtrl.noticia.postNewNoticia);
+    //GET EDIT
+    router.get('/admin/noticias/edit/:notId', isAuth, setLocals, adminCtrl.noticia.getEditNoticia);
+    //POST EDIT
+    router.post('/admin/noticias/edit', isAuth, setLocals, adminCtrl.noticia.postEditNoticia);
+    //DELETE 
+    router.delete('/admin/noticias/delete/:notId', isAuth, setLocals, adminCtrl.noticia.deleteNoticia);
 
 module.exports = router;

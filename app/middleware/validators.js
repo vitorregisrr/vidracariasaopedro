@@ -375,6 +375,49 @@ exports.editDepoimento = [
 ]
 
 
+exports.newNoticia = [
+    [
+        body('image', 'Imagem inválida, por favor escolha uma imagem!')
+        .custom((value, {
+            req
+        }) => {
+            if (!req.file) {
+                throw new Error('Formato de imagem inválida, aceitos: png, jpeg e jpg.')
+            }
+
+            return true;
+        })
+        .trim()
+    ],
+
+    //Calback Function
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            if (req.file) {
+                fs.unlink(req.file.path, err => {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+            }
+            return res
+                .status(422)
+                .render('admin/noticia/new-noticia', {
+                    path: 'admin/noticias',
+                    pageTitle: 'Nova Notícia',
+                    errorMessage: errors.array(),
+                    form: {
+                        values: req.body,
+                        hasError: errors.array().map(i => i.param)
+                    }
+                })
+        } else {
+            next();
+        }
+    }
+]
+
 exports.contato = [
     [
         body('nome', 'O nome é obrigatório.')

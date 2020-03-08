@@ -26,7 +26,7 @@
     @include transition;
 
     @media screen and(max-width: 992px) {
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .navbar-brand {
@@ -100,12 +100,12 @@
         padding: 0px 10px;
 
         @media screen and(max-width: 992px) {
-            padding-bottom: 20px;
+            padding-bottom: 10px;
         }
 
         .navbar-brand {
             &>a>img {
-                height: 45px;
+                height: 35px;
             }
         }
     }

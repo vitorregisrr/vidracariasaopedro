@@ -37,9 +37,8 @@ exports.getPortfolio = (req, res, next) => {
     let totalItems;
 
     let query = {};
-    if (req.query.categoria) {
+    if (req.query.categoria && req.query.categoria !== 'destaques') {
         query.categoria = req.query.categoria;
-
     } else {
         query.destaque = true;
     }
@@ -51,12 +50,9 @@ exports.getPortfolio = (req, res, next) => {
         .then(num => {
             totalItems = num;
             const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-
             Work.find({
                     ...query
                 })
-                // .skip((currentPage - 1) * ITEMS_PER_PAGE)
-                // .limit(ITEMS_PER_PAGE)
                 .then(works => {
                     res.render('shop/portfolio', {
                         pageTitle: "Portfólio",
@@ -76,70 +72,47 @@ exports.getPortfolio = (req, res, next) => {
 
 //CATALOGO
 exports.getCatalogo = (req, res, next) => {
-    const currentPage = req.query.page ? parseInt(req.query.page) : 1,
-        ITEMS_PER_PAGE = 6;
-    let totalItems;
-
-    let query = {};
-    if (req.query.categoria) {
-        query.categoria = req.query.categoria;
-    }
-
-    Product.find({
-            ...query
-        })
-        .countDocuments()
-        .then(num => {
-            totalItems = num;
-            const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-
-            Product.find({
-                    ...query
-                })
-                .skip((currentPage - 1) * ITEMS_PER_PAGE)
-                .limit(ITEMS_PER_PAGE)
-                .then(prods => {
-                    res.render('shop/catalogo', {
-                        pageTitle: "Catálogo de produtos",
-                        prods: prods,
-                        path: "/catalogo",
-                        hasNext: currentPage < totalPages,
-                        hasPrevious: currentPage > 1,
-                        totalPages,
-                        currentPage,
-                        filtro: query,
-                        csrfToken: req.csrfToken(),
-                    });
-                })
-                .catch(err => next(err, 500));
-        })
-        .catch(err => next(err, 500));
+    res.render('shop/catalogo', {
+        pageTitle: "Catálogo de produtos",
+        path: "/catalogo",
+        csrfToken: req.csrfToken(),
+    });
 }
 
-exports.getProducts = (req, res, next) => {
-    const currentPage = req.body.currPage ? parseInt(req.currPage.page) : 1,
-        ITEMS_PER_PAGE = req.body.itemsNumber || 8;
-    let totalItems;
+// API GET PRODUTS
+exports.getProdutos = (req, res, next) => {
+    const current_page = parseInt(req.query.currPage) || 1;
+    const page_items = parseInt(req.query.page_items) || 5;
 
-    Product.find()
+    query = {};
+    if( req.query.categoria && req.query.categoria !== 'destaques' ){
+        query.categoria = req.query.categoria
+    }else{
+        query.destaque = true;
+    }
+    
+    Product.find({...query})
         .countDocuments()
         .then(num => {
-            totalItems = num;
-            const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+            const totalItems = num;
+            const totalPages = Math.ceil(totalItems / page_items);
 
-            Product.find()
-                .skip((currPage - 1) * ITEMS_PER_PAGE)
-                .limit(ITEMS_PER_PAGE)
-                .then(prods => {
-                    res.status(200).json({
-                        prods
-                    })
+            Product.find({...query})
+                .skip((current_page - 1) * page_items)
+                .limit(page_items)
+                .then(produtos => {
+                    return res.status(200).json(JSON.stringify({
+                        produtos: produtos,
+                        has_next: current_page < totalPages,
+                    }));
                 })
                 .catch(err => res.status(500).json({
                     "message": err
-                }));
+                }))
         })
-        .catch(err => next(err, 500));
+        .catch(err => res.status(500).json({
+            "message": err
+        }))
 };
 
 exports.getContato = (req, res, next) => {
@@ -152,7 +125,6 @@ exports.getContato = (req, res, next) => {
         form: false
     });
 }
-
 
 exports.postContato = (req, res, next) => {
     transporter.sendMail({
