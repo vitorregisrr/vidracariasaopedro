@@ -24,8 +24,8 @@
                             <% if(form){ %>
                                 <%= form.hasError.includes('description') ? 'is-invalid' : '' %>
                             <% } %>""
-                            value=" <%= form ? form.values.title : ''%>" maxLength="40" class="form-control"
-                                type="text" name="title" id="title" maxLength="14">
+                            value=" <%= form ? form.values.title : ''%>" class="form-control"
+                                type="text" name="title" id="title">
                         </div>
 
                         <div class="form-group mb-4">
@@ -34,8 +34,8 @@
                             <% if(form){ %>
                                 <%= form.hasError.includes('description') ? 'is-invalid' : '' %>
                             <% } %>""
-                            value=" <%= form ? form.values.desc : ''%>" maxLength="40" class="form-control"
-                                type="text" name="desc" id="desc" maxLength="14">
+                            value=" <%= form ? form.values.desc : ''%>" class="form-control"
+                                type="text" name="desc" id="desc">
                         </div>
 
                         <div class="form-group">
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="image">Notícia</label>
+                            <label for="body">Notícia</label>
                             <input type="hidden" name="body" value="<%= form ? form.values.body : ''%>">
                             <div class="form-group">
                               <div id="editor-rich" data-deltastore="input[name='body']">

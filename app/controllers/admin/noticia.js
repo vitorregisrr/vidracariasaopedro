@@ -84,6 +84,7 @@ exports.getEditNoticia = (req, res, next) => {
 exports.postEditNoticia = (req, res, next) => {
     const form = {
         title: req.body.title,
+        desc: req.body.desc,
         body: req.body.body,
         id: req.body.id
     }
@@ -98,10 +99,10 @@ exports.postEditNoticia = (req, res, next) => {
             }
 
             work.title = form.title;
-            work.description = form.description;
+            work.desc = form.desc;
             work.body = form.body;
-            work.slug = slugify(req.body.title) + '-' + Date.now();
-
+            work.slug = slugify(req.body.title) + '-' + Date.now(); 
+            
             if (req.file) {
 
                 if (work.imageUrl) {

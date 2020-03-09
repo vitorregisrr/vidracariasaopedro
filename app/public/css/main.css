@@ -548,7 +548,7 @@ strong {
   #noticia-body iframe,
   #noticia-body .button-post {
     color: #0a1431;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.9;
     letter-spacing: 0.053rem; }
@@ -686,7 +686,8 @@ strong {
     background-image: url("/images/banners/esquadrias-banner.jpg"); }
   #banner.banner-noticia {
     background-size: cover;
-    background-position: center center; }
+    background-position: center center;
+    height: 550px !important; }
     #banner.banner-noticia:after {
       content: '';
       position: absolute;
@@ -710,7 +711,7 @@ strong {
     #banner .banner__text__title {
       color: #fff;
       font-size: 45px;
-      line-height: 65px;
+      line-height: 55px;
       letter-spacing: 0px;
       font-weight: 700;
       z-index: 1;
@@ -911,7 +912,7 @@ strong {
       font-family: 'robotolight'; }
 
 .noticia {
-  height: 300px;
+  height: 330px;
   background-color: #fff;
   box-shadow: 2.485px 2.485px 21px 0px rgba(0, 0, 0, 0.048);
   margin-bottom: 20px;
