@@ -7,6 +7,11 @@ const Noticia = new Schema({
         required: true
     },
 
+    slug: {
+        type: String,
+        required: true
+    },
+
     desc: {
         type: String,
         required: true
@@ -15,6 +20,11 @@ const Noticia = new Schema({
     imageUrl: {
         type: Object,
         required: false
+    },
+
+    date: {
+        type: Date,
+        default: Date.now()
     },
     
     body:{

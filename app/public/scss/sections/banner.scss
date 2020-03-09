@@ -11,17 +11,34 @@
         background-image: url('/images/banners/esquadrias-banner.jpg');
     }
 
+    &.banner-noticia{
+        background-size: cover;
+        background-position: center center;
+
+        &:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background-color: rgba(7, 46, 78, 0.6);
+        }
+    }
     .container,
     .row {
         height: 100%;
     }
 
     .banner__text {
+        position: relative;
         padding-top: 80px;
         display: flex;
         height: 100%;
         justify-content: center;
         flex-direction: column;
+        z-index: 3;
 
         &__title {
             color: #fff;

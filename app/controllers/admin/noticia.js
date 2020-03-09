@@ -1,12 +1,16 @@
 const Noticia = require('../../models/noticia'),
+    slugify = require('slugify')
     fileHelper = require('../../util/file-helper'),
     cloudinary = require('../../util/cloudinary');
 
 //GET ALL
 exports.getNoticias = (req, res, next) => {
     Noticia.find()
+        .sort({
+            date: -1
+        })
         .then(noticias => {
-            res.render('admin/noticia/noticia', {
+            res.render('admin/noticia/noticias', {
                 pageTitle: "Admnistrar noticia",
                 noticias: noticias,
                 path: "admin/noticia"
@@ -22,18 +26,22 @@ exports.postNewNoticia = (req, res, next) => {
             cloudinary.uploader.upload(newPath)
                 .then(image => {
                     fileHelper.delete(newPath);
-                    new Work({
+                    new Noticia({
                             ...req.body,
-                            image: image,
+                            imageUrl: image,
+                            slug: slugify(req.body.title) + '-' + Date.now()
                         })
                         .save()
                         .then(resul => {
-                            res.redirect('/admin/noticia');
+                            res.redirect('/admin/noticias');
                         })
                         .catch(err => {
                             fileHelper.delete(req.file.path);
                             next(err);
                         });
+                })
+                .catch(err => {
+                    next(err);
                 });
         })
         .catch(err => next(err));
@@ -43,7 +51,7 @@ exports.postNewNoticia = (req, res, next) => {
 //GET NEW NOTICIA
 exports.getNewNoticia = (req, res, next) => {
     res.render('admin/noticia/new-noticia', {
-        path: 'admin/noticia/noticia',
+        path: 'admin/noticia/noticias  ',
         pageTitle: 'Nova notícia',
         errorMessage: [],
         form: false
@@ -53,18 +61,18 @@ exports.getNewNoticia = (req, res, next) => {
 
 //GET EDIT NOTICIA
 exports.getEditNoticia = (req, res, next) => {
-    const notId = req.params.notId;
+    const id = req.params.id;
     Noticia.findOne({
-            _id: notId
+            _id: id
         })
-        .then(work => {
-            if (!work) {
-                return res.redirect('/admin/noticia')
+        .then(noticia => {
+            if (!noticia) {
+                return res.redirect('/admin/noticias')
             }
             res.render('admin/noticia/edit-noticia', {
                 pageTitle: "Editar Notícia",
                 path: "/admin/noticia",
-                work: work,
+                noticia: noticia,
                 errorMessage: [],
                 form: false
             })
@@ -76,7 +84,7 @@ exports.getEditNoticia = (req, res, next) => {
 exports.postEditNoticia = (req, res, next) => {
     const form = {
         title: req.body.title,
-        destaque: req.body.destaque,
+        body: req.body.body,
         id: req.body.id
     }
 
@@ -89,9 +97,10 @@ exports.postEditNoticia = (req, res, next) => {
                 return next(new Error('Houve um erro e a notícia não foi encontrada, volte e tente novamente.'));
             }
 
-            Noticia.title = form.title;
-            Noticia.description = form.description;
-            Noticia.destaque = form.destaque;
+            work.title = form.title;
+            work.description = form.description;
+            work.body = form.body;
+            work.slug = slugify(req.body.title) + '-' + Date.now();
 
             if (req.file) {
 
@@ -104,9 +113,9 @@ exports.postEditNoticia = (req, res, next) => {
                         cloudinary.uploader.upload(newPath)
                             .then(image => {
                                 fileHelper.delete(newPath);
-                                Noticia.imageUrl = image;
-                                Noticia.save();
-                                return res.redirect('/admin/noticia');
+                                work.imageUrl = image;
+                                work.save();
+                                return res.redirect('/admin/noticias');
 
                             })
                             .catch(err => next(err))
@@ -114,8 +123,8 @@ exports.postEditNoticia = (req, res, next) => {
                     .catch(err => next(err));
             } else {
 
-                Noticia.save();
-                return res.redirect('/admin/noticia');
+                work.save();
+                return res.redirect('/admin/noticias');
             }
         })
         .catch(err => next(err));
@@ -124,14 +133,14 @@ exports.postEditNoticia = (req, res, next) => {
 
 //DELETE WORK FROM noticia
 exports.deleteNoticia = (req, res, next) => {
-    const notId = req.params.notId;
+    const id = req.params.id;
     Noticia.findOneAndDelete({
-            _id: notId
+            _id: id
         })
 
         .then(prod => {
             if (!prod) {
-                return res.redirect('/admin/noticia');
+                return res.redirect('/admin/noticias');
             }
 
             if (prod.imageUrl) {

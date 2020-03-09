@@ -1,0 +1,64 @@
+<%- include('../includes/head') %>
+</head>
+
+<body>
+    <%- include('../includes/nav') %>
+    <main>
+        <div class="container">
+            <div class="jumbotron jumbotron">
+                <div class="container">
+                    <h1 class="display-5">Editar Notícia</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <%- include('../includes/errorBox') %>
+                    <form method="POST" action="/admin/noticias/edit" enctype="multipart/form-data">
+                        <div class="form-group mb-4">
+                            <label for="title">Título: </label>
+                            <input class="form-control" value="<%= noticia.title %>" maxLength="40" class="form-control"
+                                type="text" name="title" id="title" maxLength="14">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="desc">Descrição: </label>
+                            <input class="form-control" value="<%= noticia.desc %>"class="form-control"
+                                type="text" name="desc" id="desc" maxLength="30">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image">Imagem</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="image">
+                                <label class="custom-file-label" for="image">Escolha a imagem</label>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label for="image">Notícia</label>
+                            <input type="hidden" name="body" value="<%= noticia.body %>" required>
+                            <div class="form-group">
+                              <div id="editor-rich" data-deltastore="input[name='body']">
+                              </div>
+                            </div>
+                          </div>
+
+                        <input class="form-control" type="hidden" name="id" value="<%= noticia.id %>">
+                        <input class="form-control" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn btn-primary mt-4" type="submit">Editar Trabalho</button>
+                    </form>
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<%- include('../includes/end') %>
+
+</html>

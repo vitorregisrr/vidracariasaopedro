@@ -1,0 +1,138 @@
+   <%- include('includes/head')%>
+   </head>
+
+   <body class="scrollbar-inner wow fadeIn">
+       <%- include('includes/main-header') %>
+
+       <main>
+
+           <section id="banner" class="banner-noticia"
+               style="background-image: url(<%= noticia.imageUrl.secure_url %>)">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-12 banner__text text-center align-items-center">
+                           <small class="d-block mt-4 wow fadeInDown color-white">
+                               <a href="/noticias"><i class="fa fa-chevron-left"></i> Voltar</a>
+                           </small>
+                           <h4 class="banner__text__title wow fadeInDown"><%= noticia.title %>
+                           </h4>
+                           <h3 class="banner__text__subtitle wow fadeInDown"><%= noticia.desc %></h3>
+                       </div>
+                   </div>
+               </div>
+           </section>
+
+           <section id="noticia-body" class="container py-5 mt-4">
+               <input type="hidden" value="https://www.saopedrovidracaria.com.br/noticias'+<%= noticia.slug %>"
+                   id="noticia-url">
+               <input type="hidden" value="<%= noticia.slug %>" id="noticia-slug">
+
+               <div class="delta-to-html" data-delta="<%= noticia.body %>">
+               </div>
+            </section>
+            <hr />
+
+           <div class="container mb-5">
+               <div id="disqus_thread"></div>
+           </div>
+
+           <section id="contato" class="img-webp lazy" data-original="/images/banners/contact.jpg"
+               data-webp="/images/banners/contact.webp">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-lg-4">
+                           <div class="contact-us__text">
+                               <h4 class="contact-us__text__title">Entre em contato!</h4>
+                               <h5 class="contact-us__text__subtitle">Querendo tirar dúvidas ou fazer um orçamento? Use
+                                   o
+                                   formulário entre em
+                                   contato com a gente!</h5>
+
+                               <h4 class="contact-us__text__title mt-4">Ou pelos meios:</h4>
+
+                               <ul class="contact-us__text__list">
+                                   <li class="contact-us__text__list__item"><i class="fa fa-phone mr-2"></i><a
+                                           href="">(53)3242-7579</a> / <a href="">(53)3242-1916</a></li>
+                                   <li class="contact-us__text__list__item"><i class="fa fa-map-marker mr-2"></i>Rua São
+                                       João, n.25, Bairro Getúlio Vargas - Bagé/RS</li>
+                                   <li class="contact-us__text__list__item"><i class="fa fa-facebook mr-2"></i><a
+                                           href="https://www.facebook.com/saopedrovidracaria/">fb.com/saopedrovidracaria</a>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="col-lg-8">
+                           <form action="/contato" method="POST">
+                               <div class="row">
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu nome" name="nome" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+
+                                       <div class="form-group">
+                                           <input placeholder="Seu e-mail" name="email" type="text"
+                                               class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu telefone" name="telefone" type="text"
+                                               class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu Endereço" name="endereco" type="text"
+                                               class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+
+                                   </div>
+                                   <div class="col-md-12">
+                                       <div class="form-group">
+                                           <textarea rows="4" name="mensagem"
+                                               placeholder="Digite sua mensagem ou dados para o orçamento..."
+                                               type="text" class="form-control"></textarea>
+                                       </div>
+                                   </div>
+                               </div>
+                               <button type="submit" class="btn-white--square--outline float-right">Enviar
+                                   mensagem!</button>
+
+                               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </section>
+           <script>
+               /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+               var disqus_config = function () {
+                   this.page.url = $('#noticia-url')
+               .val(); // Replace PAGE_URL with your page's canonical URL variable
+                   this.page.identifier = $('#noticia-slug')
+               .val(); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+               };
+
+               (function () { // DON'T EDIT BELOW THIS LINE
+                   var d = document,
+                       s = d.createElement('script');
+                   s.src = 'https://saopedrovidracaria.disqus.com/embed.js';
+                   s.setAttribute('data-timestamp', +new Date());
+                   (d.head || d.body).appendChild(s);
+               })();
+           </script>
+           <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+                   Disqus.</a></noscript>
+
+       </main>
+       <%- include('includes/footer') %>
+   </body>
+
+   </html>

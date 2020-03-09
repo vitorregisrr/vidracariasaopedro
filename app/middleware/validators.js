@@ -407,6 +407,7 @@ exports.newNoticia = [
                     path: 'admin/noticias',
                     pageTitle: 'Nova Notícia',
                     errorMessage: errors.array(),
+                    csrfToken: req.csrfToken(),
                     form: {
                         values: req.body,
                         hasError: errors.array().map(i => i.param)

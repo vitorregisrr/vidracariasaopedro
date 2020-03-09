@@ -63,10 +63,10 @@ router.get('/admin/noticias', isAuth, setLocals, adminCtrl.noticia.getNoticias);
     //POST NEW
     router.post('/admin/noticias/new', isAuth, setLocals, validators.newNoticia, adminCtrl.noticia.postNewNoticia);
     //GET EDIT
-    router.get('/admin/noticias/edit/:notId', isAuth, setLocals, adminCtrl.noticia.getEditNoticia);
+    router.get('/admin/noticias/edit/:id', isAuth, setLocals, adminCtrl.noticia.getEditNoticia);
     //POST EDIT
     router.post('/admin/noticias/edit', isAuth, setLocals, adminCtrl.noticia.postEditNoticia);
     //DELETE 
-    router.delete('/admin/noticias/delete/:notId', isAuth, setLocals, adminCtrl.noticia.deleteNoticia);
+    router.delete('/admin/noticias/delete/:id', isAuth, setLocals, adminCtrl.noticia.deleteNoticia);
 
 module.exports = router;

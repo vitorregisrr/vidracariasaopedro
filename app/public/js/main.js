@@ -1,4 +1,5 @@
 (function () {
+
   'use strict';
   let windowWidth = (window.innerWidth > 0) ?
     window.innerWidth :
@@ -249,6 +250,9 @@
         required: 'Precisamos saber seu telefone.',
       },
 
+      endereco: {
+        required: 'Precisamos saber seu endereço.',
+      },
 
       email: {
         required: 'Precisamos saber seu endereço.',
@@ -261,6 +265,13 @@
       }
     }
   });
+
+  $('.delta-to-html').each(function(index){
+    var tempCont = document.createElement("div");
+    (new Quill(tempCont)).setContents(JSON.parse($(this).attr('data-delta')));
+    var html = tempCont.getElementsByClassName("ql-editor")[0].innerHTML;
+    $(this).html(html);
+  })
 
   window.dispatchEvent(new Event('resize'));
 })();

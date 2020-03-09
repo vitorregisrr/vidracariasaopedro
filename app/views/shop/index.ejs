@@ -214,7 +214,7 @@
                    </div>
                </div>
            </section>
-           <section id="portfolio">
+           <section id="portfolio" class="mt-3 mt-lg-5">
                <div class="row d-flex justify-content-center mb-4 pb-3">
                    <h3 class="inner-title text-center pb-1"><span class="color-main">Projetos</span> em destaque
                    </h3>
@@ -298,6 +298,42 @@
                                <% }); %>
                            </div>
                        </div>
+                   </div>
+               </div>
+           </section>
+           <section id="noticias" class="mb-5">
+               <div class="container">
+
+                   <div class="row d-flex justify-content-center mb-4 pb-3">
+                       <h3 class="inner-title text-center pb-1">Ultimas <span class="color-main">Notícias</span>
+                       </h3>
+                       <div class="bottom-lines mb-2"></div>
+                   </div>
+
+                   <div class="row">
+                       <div class="col-lg-12">
+                           <div class="row">
+                               <% noticias.forEach( not => { %>
+                               <div class="col-12 col-md-6 col-lg-4">
+                                   <article class="noticia wow fadeInUp">
+                                       <div class="noticia__img">
+                                           <a href="/noticias/<%= not.slug %>">
+                                               <img src="/images/loading.gif" data-src="<%= not.imageUrl.secure_url %>"
+                                                   class="lazy" alt="<%= not.title %>">
+                                           </a>
+                                       </div>
+                                       <div class="noticia__text">
+                                           <h3 class="noticia__text__title"><%= not.title %></h3>
+                                           <p class="noticia__text__desc m-0"><%= not.desc %> </p>
+                                       </div>
+                                   </article>
+                               </div>
+                               <% }); %>
+                           </div>
+                       </div>
+                       <div class="row w-100 d-flex justify-content-center mt-4">
+                        <a role="button" href="/noticias" class="btn-main">Ver mais</a>
+                    </div>
                    </div>
                </div>
            </section>

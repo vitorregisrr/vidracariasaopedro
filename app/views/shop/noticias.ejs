@@ -1,0 +1,126 @@
+   <%- include('includes/head')%>
+   </head>
+
+   <body class="scrollbar-inner wow fadeIn">
+       <%- include('includes/main-header') %>
+
+       <main>
+
+           <section id="banner" class="img-webp">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-12 col-md-10 col-lg-9 text-left banner__text">
+                           <h4 class="banner__text__title wow fadeInDown">Notícias
+                           </h4>
+                           <h3 class="banner__text__subtitle wow fadeInDown">Informações, novidades e inovação!</h3>
+                       </div>
+                   </div>
+               </div>
+           </section>
+
+           <section id="noticias" class="py-5" >
+               <div class="container">
+                       <div class="col-lg-9">
+                           <div class="row">
+                            <% noticias.forEach( not => { %>
+                                <div class="col-12 col-md-6">
+                                    <article class="noticia wow fadeInUp">
+                                        <div class="noticia__img">
+                                            <a href="/noticias/<%= not.slug %>">
+                                                <img src="/images/loading.gif" data-src="<%= not.imageUrl.secure_url %>"
+                                                    class="lazy" alt="<%= not.title %>">
+                                            </a>
+                                        </div>
+                                        <div class="noticia__text">
+                                            <h3 class="noticia__text__title"><%= not.title %></h3>
+                                            <p class="noticia__text__desc m-0"><%= not.desc %> </p>
+                                        </div>
+                                    </article>
+                                </div>
+                                <% }); %>
+                           </div>
+                           <div class="row">
+                               <div class="col-12 d-flex justify-content-center">
+                                   <% include('./includes/pagination.ejs') %>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </section>
+            <section id="contato" class="img-webp lazy" data-original="/images/banners/contact.jpg" data-webp="/images/banners/contact.webp">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-lg-4">
+                           <div class="contact-us__text">
+                               <h4 class="contact-us__text__title">Entre em contato!</h4>
+                               <h5 class="contact-us__text__subtitle">Querendo tirar dúvidas ou fazer um orçamento? Use
+                                   o
+                                   formulário entre em
+                                   contato com a gente!</h5>
+
+                               <h4 class="contact-us__text__title mt-4">Ou pelos meios:</h4>
+
+                               <ul class="contact-us__text__list">
+                                   <li class="contact-us__text__list__item"><i class="fa fa-phone mr-2"></i><a
+                                           href="">(53)3242-7579</a> / <a href="">(53)3242-1916</a></li>
+                                   <li class="contact-us__text__list__item"><i class="fa fa-map-marker mr-2"></i>Rua São
+                                       João, n.25, Bairro Getúlio Vargas - Bagé/RS</li>
+                                   <li class="contact-us__text__list__item"><i class="fa fa-facebook mr-2"></i><a
+                                           href="https://www.facebook.com/saopedrovidracaria/">fb.com/saopedrovidracaria</a>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <div class="col-lg-8">
+                           <form action="/contato" method="POST">
+                               <div class="row">
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu nome" name="nome" type="text" class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+
+                                       <div class="form-group">
+                                           <input placeholder="Seu e-mail" name="email" type="text"
+                                               class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu telefone" name="telefone" type="text"
+                                               class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                       <div class="form-group">
+                                           <input placeholder="Seu Endereço" name="endereco" type="text"
+                                               class="form-control">
+                                       </div>
+                                   </div>
+                                   <div class="col-md-6">
+
+                                   </div>
+                                   <div class="col-md-12">
+                                       <div class="form-group">
+                                           <textarea rows="4" name="mensagem"
+                                               placeholder="Digite sua mensagem ou dados para o orçamento..."
+                                               type="text" class="form-control"></textarea>
+                                       </div>
+                                   </div>
+                               </div>
+                               <button type="submit" class="btn-white--square--outline float-right">Enviar
+                                   mensagem!</button>
+
+                               <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </section>
+       </main>
+       <%- include('includes/footer') %>
+   </body>
+
+   </html>

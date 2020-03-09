@@ -6,6 +6,8 @@ const express = require('express'),
 router.get('/', pagesCtrl.getIndex);
 router.get('/portfolio', pagesCtrl.getPortfolio);
 router.get('/catalogo', pagesCtrl.getCatalogo);
+router.get('/noticias', pagesCtrl.getNoticias);
+router.get('/noticias/:slug', pagesCtrl.getNoticia);
 router.get('/contato', pagesCtrl.getContato);
 router.post('/contato', validators.contato, pagesCtrl.postContato);
 

@@ -104,7 +104,7 @@ strong {
   transition: all 0.3s ease-in-out; }
 
 .btn-square, .btn-main--square, .btn-main--square--outline, .btn-white--square, .btn-white--square--outline {
-  border-radius: 25px;
+  border-radius: 13px;
   padding: 13px 32px;
   line-height: 22px;
   font-size: 16px; }
@@ -528,6 +528,124 @@ strong {
       opacity: 1;
       transform: scale(1.1); }
 
+#noticia-body {
+  margin: auto;
+  padding: 40px 0; }
+  @media screen and (max-width: 992px) {
+    #noticia-body {
+      padding: 1.3rem 0; } }
+  @media screen and (max-width: 768px) {
+    #noticia-body {
+      padding-bottom: 0; } }
+  #noticia-body p,
+  #noticia-body h1,
+  #noticia-body h2,
+  #noticia-body h3,
+  #noticia-body h4,
+  #noticia-body ul,
+  #noticia-body ol,
+  #noticia-body .tags,
+  #noticia-body iframe,
+  #noticia-body .button-post {
+    color: #0a1431;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.9;
+    letter-spacing: 0.053rem; }
+    @media screen and (max-width: 768px) {
+      #noticia-body p,
+      #noticia-body h1,
+      #noticia-body h2,
+      #noticia-body h3,
+      #noticia-body h4,
+      #noticia-body ul,
+      #noticia-body ol,
+      #noticia-body .tags,
+      #noticia-body iframe,
+      #noticia-body .button-post {
+        font-size: 16px; } }
+  #noticia-body h1,
+  #noticia-body h2,
+  #noticia-body h3,
+  #noticia-body h4,
+  #noticia-body h5 {
+    margin: 2.4rem auto 1rem; }
+  #noticia-body ul,
+  #noticia-body ol {
+    list-style: disc;
+    padding-left: 2.5rem;
+    margin: 0 auto 1.6rem; }
+  #noticia-body li {
+    padding: 0.625rem 0; }
+    #noticia-body li > ul {
+      margin-bottom: 0; }
+  #noticia-body p code,
+  #noticia-body li code {
+    word-wrap: break-word; }
+  #noticia-body img {
+    display: block;
+    max-width: 100%;
+    margin: 1.875rem auto; }
+  #noticia-body iframe {
+    padding: 0 1.6rem 1.6rem;
+    width: 100%; }
+  #noticia-body blockquote {
+    color: #fff;
+    border-left: 0.3rem solid #40b8f0;
+    padding: 0 1.475rem;
+    font-style: italic;
+    margin: 3.125rem auto; }
+  #noticia-body hr {
+    border: 1px solid #0a1431;
+    margin: 3rem auto; }
+  #noticia-body #twitter-widget-0,
+  #noticia-body .instagram-media,
+  #noticia-body .twitter-tweet {
+    margin: 20px auto !important; }
+  #noticia-body h1,
+  #noticia-body h2,
+  #noticia-body h3,
+  #noticia-body h4,
+  #noticia-body h5 {
+    font-weight: 800;
+    letter-spacing: 0.069rem;
+    line-height: 1.4; }
+  #noticia-body h1 {
+    font-size: 2.8rem; }
+    @media screen and (max-width: 992px) {
+      #noticia-body h1 {
+        padding: 0 1rem; } }
+  #noticia-body h2 {
+    font-size: 2.1rem; }
+    @media screen and (max-width: 992px) {
+      #noticia-body h2 {
+        font-size: 1.375rem; } }
+  #noticia-body h3 {
+    font-size: 1.6rem; }
+    @media screen and (max-width: 992px) {
+      #noticia-body h3 {
+        font-size: 1.125rem; } }
+  #noticia-body h4 {
+    font-size: 1.4rem; }
+  #noticia-body h5 {
+    font-size: 1.2rem; }
+  #noticia-body strong {
+    font-weight: 700; }
+  #noticia-body a {
+    border-bottom: 1px dashed #40b8f0;
+    color: #40b8f0;
+    text-decoration: none;
+    transition: opacity 0.5s; }
+    #noticia-body a svg {
+      color: #fff; }
+    #noticia-body a:hover {
+      opacity: 0.8; }
+  #noticia-body img ~ em {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.3; }
+
 #contato {
   padding: 40px 0;
   min-height: 65vh;
@@ -566,15 +684,29 @@ strong {
     background-image: url("/images/banners/esquadrias-banner.webp"); }
   #banner.non-webp {
     background-image: url("/images/banners/esquadrias-banner.jpg"); }
+  #banner.banner-noticia {
+    background-size: cover;
+    background-position: center center; }
+    #banner.banner-noticia:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background-color: rgba(7, 46, 78, 0.6); }
   #banner .container,
   #banner .row {
     height: 100%; }
   #banner .banner__text {
+    position: relative;
     padding-top: 80px;
     display: flex;
     height: 100%;
     justify-content: center;
-    flex-direction: column; }
+    flex-direction: column;
+    z-index: 3; }
     #banner .banner__text__title {
       color: #fff;
       font-size: 45px;
@@ -608,7 +740,7 @@ strong {
   .footer__developed p {
     color: #7b8b8e;
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     margin-bottom: 0.4rem;
     padding: 0; }
     .footer__developed p a {
@@ -618,7 +750,7 @@ strong {
   width: 100vw;
   position: fixed;
   background-color: transparent;
-  z-index: 3;
+  z-index: 6;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -771,6 +903,44 @@ strong {
       text-overflow: ellipsis;
       font-family: 'roboto_slabbold'; }
     .produto__text__desc {
+      color: #707070;
+      font-size: 13px;
+      font-weight: 300;
+      overflow: hidden;
+      max-height: 90%;
+      font-family: 'robotolight'; }
+
+.noticia {
+  height: 300px;
+  background-color: #fff;
+  box-shadow: 2.485px 2.485px 21px 0px rgba(0, 0, 0, 0.048);
+  margin-bottom: 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+  .noticia:hover {
+    transform: scale(1.02); }
+  .noticia__img {
+    height: 65%;
+    position: relative; }
+    .noticia__img img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%; }
+  .noticia__text {
+    padding: 15px 20px 20px 25px;
+    height: 35%;
+    text-align: left; }
+    .noticia__text__title {
+      color: #2c2c2c;
+      font-size: 16px;
+      font-weight: 600;
+      white-space: wrap;
+      text-overflow: ellipsis;
+      font-family: 'roboto_slabbold'; }
+    .noticia__text__desc {
       color: #707070;
       font-size: 13px;
       font-weight: 300;

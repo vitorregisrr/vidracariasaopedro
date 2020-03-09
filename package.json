@@ -44,6 +44,7 @@
     "nodemailer": "^5.1.1",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "sharp": "^0.21.3",
-    "sitemap-generator": "^8.3.3"
+    "sitemap-generator": "^8.3.3",
+    "slugify": "^1.4.0"
   }
 }
