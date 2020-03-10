@@ -1,5 +1,5 @@
 .noticia {
-    height: 330px;
+    height: 370px;
     background-color: #fff;
     box-shadow: 2.485px 2.485px 21px 0px rgba(0, 0, 0, 0.048);
     margin-bottom: 20px;
@@ -10,7 +10,7 @@
     }
 
     &__img {
-        height: 65%;
+        height: 60%;
         position: relative;
 
         img {
@@ -22,7 +22,7 @@
 
     &__text {
         padding: 15px 20px 20px 25px;
-        height: 35%;
+        height: 45%;
         text-align: left;
 
         &__title {

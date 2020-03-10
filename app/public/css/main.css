@@ -104,7 +104,7 @@ strong {
   transition: all 0.3s ease-in-out; }
 
 .btn-square, .btn-main--square, .btn-main--square--outline, .btn-white--square, .btn-white--square--outline {
-  border-radius: 13px;
+  border-radius: 9px;
   padding: 13px 32px;
   line-height: 22px;
   font-size: 16px; }
@@ -529,11 +529,10 @@ strong {
       transform: scale(1.1); }
 
 #noticia-body {
-  margin: auto;
-  padding: 40px 0; }
+  margin: auto; }
   @media screen and (max-width: 992px) {
     #noticia-body {
-      padding: 1.3rem 0; } }
+      padding: 0 20px; } }
   @media screen and (max-width: 768px) {
     #noticia-body {
       padding-bottom: 0; } }
@@ -697,6 +696,22 @@ strong {
       height: 100%;
       z-index: 2;
       background-color: rgba(7, 46, 78, 0.6); }
+    @media screen and (max-width: 992px) {
+      #banner.banner-noticia {
+        height: 450px !important; } }
+    @media screen and (max-width: 992px) {
+      #banner.banner-noticia .banner__text {
+        padding: 0 20px; } }
+    @media screen and (max-width: 992px) {
+      #banner.banner-noticia .banner__text__title {
+        font-size: 25px;
+        line-height: 1.5; } }
+    @media screen and (max-width: 992px) {
+      #banner.banner-noticia .banner__text__subtitle {
+        font-size: 17px; } }
+    @media screen and (max-width: 992px) {
+      #banner.banner-noticia .banner__text small {
+        font-size: 15px; } }
   #banner .container,
   #banner .row {
     height: 100%; }
@@ -912,7 +927,7 @@ strong {
       font-family: 'robotolight'; }
 
 .noticia {
-  height: 330px;
+  height: 370px;
   background-color: #fff;
   box-shadow: 2.485px 2.485px 21px 0px rgba(0, 0, 0, 0.048);
   margin-bottom: 20px;
@@ -924,7 +939,7 @@ strong {
   .noticia:hover {
     transform: scale(1.02); }
   .noticia__img {
-    height: 65%;
+    height: 60%;
     position: relative; }
     .noticia__img img {
       object-fit: cover;
@@ -932,7 +947,7 @@ strong {
       width: 100%; }
   .noticia__text {
     padding: 15px 20px 20px 25px;
-    height: 35%;
+    height: 45%;
     text-align: left; }
     .noticia__text__title {
       color: #2c2c2c;

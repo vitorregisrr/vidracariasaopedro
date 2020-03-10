@@ -11,12 +11,12 @@
         background-image: url('/images/banners/esquadrias-banner.jpg');
     }
 
-    &.banner-noticia{
+    &.banner-noticia {
         background-size: cover;
         background-position: center center;
         height: 550px !important;
 
-        &:after{
+        &:after {
             content: '';
             position: absolute;
             top: 0;
@@ -26,7 +26,38 @@
             z-index: 2;
             background-color: rgba(7, 46, 78, 0.6);
         }
+
+
+        @media screen and (max-width: 992px) {
+            height: 450px !important;
+        }
+
+        .banner__text {
+            @media screen and (max-width: 992px) {
+                padding: 0 20px;
+            }
+
+            &__title {
+                @media screen and (max-width: 992px) {
+                    font-size: 25px;
+                    line-height: 1.5;
+                }
+            }
+
+            &__subtitle {
+                @media screen and (max-width: 992px) {
+                    font-size: 17px;
+                }
+            }
+
+            small {
+                @media screen and (max-width: 992px) {
+                    font-size: 15px;
+                }
+            }
+        }
     }
+
     .container,
     .row {
         height: 100%;
